@@ -7,3 +7,8 @@ export default function Home() {
     </main>
   );
 }
+
+export const metadata = {
+  title: 'Home - PiTalk',
+  description: 'Welcome to PiTalk. Here you can connect with millions of developer'
+}
