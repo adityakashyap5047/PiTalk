@@ -34,6 +34,28 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Features Section */}
+      <section className="container mx-auto py-20 px-20">
+        <h3 className="text-5xl font-semibold text-center flex gap-2 justify-center mb-10">Key Features</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <div className="p-6 bg-white rounded-lg shadow-md flex justify-center flex-col items-center">
+          <svg className="w-10 h-10 text-blue-500 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M160 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM368 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg>
+            <h3 className="text-xl font-semibold mb-2">Real-time Messaging</h3>
+            <p>Enjoy instant messaging with friends and family.</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md flex justify-center flex-col items-center">
+            <h3 className="text-xl font-semibold mb-2">Group Chats</h3>
+            <p className="w-10 h-10 text-green-500 mb-4">Create and join group chats with your loved ones.</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md flex justify-center flex-col items-center">
+            <img style={{color: "yellow"}} className="w-10 h-10 text-yellow-500 mb-4" src="https://cdn4.iconfinder.com/data/icons/folders-56/64/x-04-1024.png" alt="file sharing icon" />
+            <h3 className="text-xl font-semibold mb-2">File Sharing</h3>
+            <p>Easily share photos, videos, and documents.</p>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
