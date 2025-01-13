@@ -12,10 +12,10 @@ const Navbar = () => {
                     <Link href="/" className="hover:text-gray-200">Home</Link>
                 </li>
                 <li>
-                    <Link href="/about" className="hover:text-gray-200">About</Link>
+                    <Link href="/forums" className="hover:text-gray-200">Forums</Link>
                 </li>
                 <li>
-                    <Link href="/contact" className="hover:text-gray-200">Cotact</Link>
+                    <Link href="/talk" className="hover:text-gray-200">UserTalk</Link>
                 </li>
                 <li>
                     <UserButton/>
