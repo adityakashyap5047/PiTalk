@@ -108,6 +108,179 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Pricing section */}
+      
+      <section className="container mx-auto py-20 px-8 sm:px-16">
+  <h3 className="text-3xl sm:text-5xl font-semibold text-center mb-12">
+    Pay once, use forever
+  </h3>
+
+  {/* Card Grid */}
+  <div className="grid grid-cols-1 px-6 sm:grid-cols-2 text-center mx-auto lg:grid-cols-3 gap-8 max-w-4xl">
+    {/* Standard Plan */}
+    <div className="flex flex-col rounded-xl shadow-lg bg-white p-6 hover:scale-105 transition-transform">
+      <h3 className="text-xl font-semibold text-gray-900">Standard</h3>
+      <p className="mt-2 text-sm text-gray-500">1 license for only 1 activation</p>
+      <div className="mt-4 flex justify-center items-baseline space-x-2">
+        <p className="text-lg text-gray-500 line-through">$39</p>
+        <p className="text-4xl font-extrabold text-gray-900">$29</p>
+      </div>
+      <button
+        className="mt-6 w-full border border-blue-500 text-blue-500 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-100 transition-colors"
+      >
+        Buy now
+      </button>
+      <ul className="mt-6 space-y-4 text-sm text-gray-600">
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Lifetime access</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">All AI features</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Use your own OpenAI key</span>
+        </li>
+      </ul>
+    </div>
+
+    {/* Extended Plan */}
+    <div className="flex flex-col rounded-xl shadow-lg bg-white p-6 border-2 border-blue-500 hover:scale-105 transition-transform">
+      <h3 className="text-xl font-semibold text-gray-900">Extended</h3>
+      <p className="mt-2 text-sm text-gray-500">1 license for up to 3 activations</p>
+      <div className="mt-4 flex justify-center items-baseline space-x-2">
+        <p className="text-lg text-gray-500 line-through">$59</p>
+        <p className="text-4xl font-extrabold text-gray-900">$39</p>
+      </div>
+      <button
+        className="mt-6 w-full bg-blue-500 text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+      >
+        Buy now
+      </button>
+      <ul className="mt-6 space-y-4 text-sm text-gray-600">
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Lifetime access</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">All AI features</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Use your own OpenAI key</span>
+        </li>
+      </ul>
+    </div>
+
+    {/* Premium Plan */}
+    <div className="flex flex-col rounded-xl shadow-lg bg-white p-6 hover:scale-105 transition-transform">
+      <h3 className="text-xl font-semibold text-gray-900">Premium</h3>
+      <p className="mt-2 text-sm text-gray-500">1 license for up to 5 activations</p>
+      <div className="mt-4 flex justify-center items-baseline space-x-2">
+        <p className="text-lg text-gray-500 line-through">$79</p>
+        <p className="text-4xl font-extrabold text-gray-900">$49</p>
+      </div>
+      <button
+        className="mt-6 w-full border border-blue-500 text-blue-500 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-100 transition-colors"
+      >
+        Buy now
+      </button>
+      <ul className="mt-6 space-y-4 text-sm text-gray-600">
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Lifetime access</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">All AI features</span>
+        </li>
+        <li className="flex items-center">
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full">
+            <svg
+              className="w-4 h-4 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M16.707 6.293a1 1 0 00-1.414-1.414L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8z" />
+            </svg>
+          </span>
+          <span className="ml-3">Use your own OpenAI key</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+    
     </div>
   );
 };
