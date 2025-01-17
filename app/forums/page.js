@@ -47,7 +47,7 @@ const Forums = () => {
                     <Image alt="a" src={topic.img} width={74} height={74}/>
                     <h2 className="text-2xl">{topic.text}</h2>
                     <p className="px-3">{topic.desc}</p>
-                    <Link href={`/chat/${topic.slug}`}>
+                    <Link href={`/forum/${topic.slug}`}>
                         <Button className='px-4 border border-slate-300 py-2'>Discuss now</Button>
                     </Link>
                 </div>
