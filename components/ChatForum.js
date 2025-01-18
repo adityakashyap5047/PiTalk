@@ -5,7 +5,7 @@ import { useCreateChatClient, Chat, Channel, ChannelHeader, MessageInput, Messag
 
 import 'stream-chat-react/dist/css/v2/index.css';
 
-const apiKey = 'dz5f4d5kzrue';
+const apiKey = process.env.STREAM_API_KEY;
 const userId = 'jolly-firefly-1';
 const userName = 'jolly';
 const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9sbHktZmlyZWZseS0xIiwiZXhwIjoxNzM3MTU0NzkyfQ.7Q4faTSsHAouN57plymo77tcYoCvr7GWqVNIgRjBhvA';
