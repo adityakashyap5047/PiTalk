@@ -7,7 +7,7 @@ import { useUser } from '@clerk/nextjs';
 import 'stream-chat-react/dist/css/v2/index.css';
 
 const apiKey = "p62pstehwxp6";
-const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlcl8ycm9Sekh4U3lCZEM4OVVKOHFWQlBhTDNIdFMifQ.UYrS-7Xt3r6eVvQUEeAMh-5KpBkXIvD_PZlmJT-eVxo';
+const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlcl8ycnE2b3JXZXRLQWx0Nmg0M2dqdUJaTXZCNnIifQ.dg4a0p1dk8gYH5FXdATkGpE3C6B_wFdNSj0rHwo12h8';
 
 
 const ChatForum = ({slug}) => {
@@ -35,7 +35,7 @@ const ChatForum = ({slug}) => {
 
     const channel = client.channel('messaging', slug, {
       image: 'https://getstream.io/random_png/?name=react',
-      name: "Discussion",
+      name: `${slug} - Discussion`,
       members: [userId],
     });
 
