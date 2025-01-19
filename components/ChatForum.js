@@ -6,7 +6,7 @@ import { useUser } from '@clerk/nextjs';
 
 import 'stream-chat-react/dist/css/v2/index.css';
 
-const apiKey = process.env.STREAM_API_KEY;
+const apiKey = "p62pstehwxp6";
 const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlcl8ycm9Sekh4U3lCZEM4OVVKOHFWQlBhTDNIdFMifQ.UYrS-7Xt3r6eVvQUEeAMh-5KpBkXIvD_PZlmJT-eVxo';
 
 
@@ -22,6 +22,7 @@ const ChatForum = ({slug}) => {
     name: userName,
     image: `https://getstream.io/random_png/?name=${userName}`,
   };
+
   const [channel, setChannel] = useState();
   const client = useCreateChatClient({
     apiKey,
@@ -39,7 +40,7 @@ const ChatForum = ({slug}) => {
     });
 
     setChannel(channel);
-  }, [client, slug]);
+  }, [client, slug, userId]);
 
   if (!client) return <div>Setting up client & connection...</div>;
 
