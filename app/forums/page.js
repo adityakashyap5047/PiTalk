@@ -6,31 +6,31 @@ import Link from 'next/link';
 const topics = [
     {   
         text: "Python",
-        img: "/python_logo.webp",
+        img: "/python-logo.jpeg",
         desc: "Lets discuss everything related to Python",
         slug: "python-chat"
     },
     {
         text: "JavaScript",
-        img: "/js.webp",
+        img: "/js_image-Photoroom.png",
         desc: "Learn and share JavaScript knowledge",
         slug: "js-chat"
     },
     {
         text: "React",
-        img: "/reactjs.webp",
+        img: "/react_logo-Photoroom.png",
         desc: "Build amazing user interface with React",
         slug: "react-chat"
     },
     {
         text: "CSS",
-        img: "/css.webp",
+        img: "/css-logo.png",
         desc: "Explore the world of designing and CSS",
         slug: "css-chat"
     },
     {
         text: "Web Development",
-        img: "/html.webp",
+        img: "/html_logo-Photoroom.png",
         desc: "Discuss front-end, back-end, and full-stack web development.",
         slug: "web-chat"
     }
