@@ -5,31 +5,31 @@ import Link from 'next/link';
 
 const topics = [
     {   
-        text: "Python",
+        text: "Python-chat-new",
         img: "/python.webp",
         desc: "Lets discuss everything related to Python",
         slug: "python"
     },
     {
-        text: "JavaScript",
+        text: "JavaScript-chat-new",
         img: "/js.webp",
         desc: "Learn and share JavaScript knowledge",
         slug: "js"
     },
     {
-        text: "React",
+        text: "React-chat-new",
         img: "/reactjs.webp",
         desc: "Build amazing user interface with React",
         slug: "react"
     },
     {
-        text: "CSS",
+        text: "CSS-chat-new",
         img: "/css.webp",
         desc: "Explore the world of designing and CSS",
         slug: "css"
     },
     {
-        text: "Web Development",
+        text: "Web Development-chat-new",
         img: "/html.webp",
         desc: "Discuss front-end, back-end, and full-stack web development.",
         slug: "web"

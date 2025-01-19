@@ -17,6 +17,20 @@ export async function POST(request) {
     const user_id = user.data.id;
     const token = ServerClient.createToken(user_id);
     console.log(token);
-    console.log(token);
+
+    //creating user
+    await ServerClient.upsertUser({id: user.data.id});
+    
+    //Give access to this user for all chats
+    const slugs = ["python-chat-new", "js-chat-new", "react-chat-new", "css-chat-new", "web-chat-new"];
+    slugs.forEach(async (slug) => {
+        const channel = ServerClient.channel('messaging', slug, {
+            image: 'https://getstream.io/random_png/?name=react',
+            name: `${slug} - Discussion`,
+            created_by_id: user.data.id,
+        })
+        await channel.create();
+        channel.addMembers([user.data.id])
+    })
     return Response.json({ message: "Welcome" })
 }
