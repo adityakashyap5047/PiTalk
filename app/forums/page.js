@@ -48,7 +48,7 @@ const Forums = () => {
                     <h2 className="text-2xl">{topic.text}</h2>
                     <p className="px-3">{topic.desc}</p>
                     <Link href={`/forum/${topic.slug}`}>
-                        <Button className='px-4 border border-slate-300 py-2'>Discuss now</Button>
+                        <Button className='px-4 border bg-cyan-600 border-slate-300 py-2 hover:bg-blue-600'>Discuss now</Button>
                     </Link>
                 </div>
             })}
