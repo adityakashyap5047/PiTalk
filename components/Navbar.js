@@ -19,9 +19,6 @@ const Navbar = () => {
                 <li>
                     <Link href="/forums" className="hover:text-gray-200">Forums</Link>
                 </li>
-                <li>
-                    <Link href="/talk" className="hover:text-gray-200">UserTalk</Link>
-                </li>
                 <li className='flex justify-center items-center'>
                     <UserButton/>
                 </li>
