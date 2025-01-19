@@ -9,7 +9,7 @@ import 'stream-chat-react/dist/css/v2/index.css';
 
 const ChatForum = ({slug, clerkUser}) => {
 
-  const apiKey = NEXT_PUBLIC_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const userToken = clerkUser.token;
 
   const user = {

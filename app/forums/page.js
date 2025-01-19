@@ -6,7 +6,7 @@ import Link from 'next/link';
 const topics = [
     {   
         text: "Python",
-        img: "/python.webp",
+        img: "/python_logo.webp",
         desc: "Lets discuss everything related to Python",
         slug: "python-chat"
     },
