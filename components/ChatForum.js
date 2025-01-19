@@ -15,7 +15,7 @@ const ChatForum = ({slug, clerkUser}) => {
   const user = {
     id: clerkUser.id,
     name: clerkUser.name,
-    image: `https://getstream.io/random_png/?name=${name}`,
+    image: clerkUser.image,
   };
 
   const [channel, setChannel] = useState();
@@ -29,8 +29,8 @@ const ChatForum = ({slug, clerkUser}) => {
     if (!client) return;
 
     const channel = client.channel('messaging', slug, {
-      image: 'https://getstream.io/random_png/?name=react',
-      name: `${slug} - Discussion`,
+      image: `/${slug}-logo.png`,
+      name: `${slug} - Talk`,
       members: [clerkUser.id],
     });
 

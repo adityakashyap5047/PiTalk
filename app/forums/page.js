@@ -6,33 +6,33 @@ import Link from 'next/link';
 const topics = [
     {   
         text: "Python",
-        img: "/python-logo.jpeg",
+        img: "/python-logo.png",
         desc: "Lets discuss everything related to Python",
-        slug: "python-chat"
+        slug: "Python"
     },
     {
         text: "JavaScript",
-        img: "/js_image-Photoroom.png",
+        img: "/js-logo.png",
         desc: "Learn and share JavaScript knowledge",
-        slug: "js-chat"
+        slug: "Js"
     },
     {
         text: "React",
-        img: "/react_logo-Photoroom.png",
+        img: "/react-logo.png",
         desc: "Build amazing user interface with React",
-        slug: "react-chat"
+        slug: "React"
     },
     {
         text: "CSS",
         img: "/css-logo.png",
         desc: "Explore the world of designing and CSS",
-        slug: "css-chat"
+        slug: "Css"
     },
     {
         text: "Web Development",
-        img: "/html_logo-Photoroom.png",
+        img: "/html-logo.png",
         desc: "Discuss front-end, back-end, and full-stack web development.",
-        slug: "web-chat"
+        slug: "Web"
     }
 ];
 

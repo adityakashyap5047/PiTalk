@@ -16,7 +16,7 @@ export async function POST(request) {
     //getting the user data from clerk using clerk webhooks
     const user = await request.json();
     console.log("A NEW USER HAS BEEN CREATED")
-    
+
     //Create User Token
     const user_id = user.data.id;
     const token = serverClient.createToken(user_id);
@@ -34,11 +34,11 @@ export async function POST(request) {
     await serverClient.upsertUser({id: user.data.id});
     
     //Give access to this user for all chats
-    const slugs = ["python-chat", "js-chat", "react-chat", "css-chat", "web-chat"];
+    const slugs = ["Python", "Js", "React", "Css", "Web"];
     slugs.forEach(async (slug) => {
         const channel = serverClient.channel('messaging', slug, {
-            image: 'https://getstream.io/random_png/?name=react',
-            name: `${slug} - Discussion`,
+            image: `/${slug}-logo.png`,
+            name: `${slug} - Talk`,
             created_by_id: user.data.id,
         })
         await channel.create();
