@@ -1,4 +1,5 @@
 import { StreamChat } from "stream-chat";
+import { clerkClient } from "@clerk/nextjs/server";  
 
 const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
@@ -9,14 +10,24 @@ const api_secret = process.env.STREAM_API_SECRET;
 //ngrok -> ngrok helps to make a tunnel of the localhost
 
 export async function POST(request) {
+
     const ServerClient = StreamChat.getInstance(api_key, api_secret);
+
     //getting the user data from clerk
     const user = await request.json();
     console.log("A NEW USER HAS BEEN CREATED")
     //Create User Token
     const user_id = user.data.id;
     const token = ServerClient.createToken(user_id);
-    console.log(token);
+
+    //adding meta data into clerk
+    const client = await clerkClient();
+
+    await client.users.updateUserMetadata(user_id, {
+        publicMetadata: {
+            token: token
+        }
+    })
 
     //creating user
     await ServerClient.upsertUser({id: user.data.id});
