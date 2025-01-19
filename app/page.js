@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import AboutUs from "@/components/AboutUs";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import Main from "@/components/Main";
+import AboutUs from "@/components/AboutUs";
 
 const Homepage = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen overflow-hidden">
       {/* Hero section */}
 
       <section className="bg-white dark:bg-gray-800">
-        <Main/>
+        <BackgroundGradientAnimation>
+          <Main/>
+        </BackgroundGradientAnimation>
       </section>
 
       {/* Features Section */}
