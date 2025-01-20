@@ -58,3 +58,8 @@ const Forums = () => {
 }
 
 export default Forums
+
+export const metadata = {
+    title: 'Forums - PiTalk',
+    description: "Let's start talking with any one of the technologies"
+}

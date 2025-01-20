@@ -23,3 +23,8 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
+export const metadata = {
+  title: 'Home - PiTalk',
+  description: "Explore the world of discussion on recent technologies"
+}
