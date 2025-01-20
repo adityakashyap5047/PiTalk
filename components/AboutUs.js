@@ -54,11 +54,11 @@ const AboutUs = () => {
   };
 
   return (
-    <section className="pb-12 bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
+    <section className="py-10 bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
       <div className="container mx-auto px-6 md:px-12">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          About Us
-        </h2>
+      <h3 className="text-5xl text-[#0E0E5C] font-semibold text-center flex gap-2 justify-center mb-10">
+        About Us
+      </h3>
         <div className="space-y-4">
           {faqData.map((faq, index) => (
             <div
@@ -79,7 +79,7 @@ const AboutUs = () => {
                 )}
               </div>
               {activeIndex === index && (
-                <p className="mt-4 text-[#F5DEB3]">{faq.answer}</p>
+                <p className="mt-4 text-[#8ec0e8]">{faq.answer}</p>
               )}
             </div>
           ))}

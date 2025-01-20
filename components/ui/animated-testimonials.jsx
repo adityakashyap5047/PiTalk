@@ -77,7 +77,7 @@ export const AnimatedTestimonials = ({
           </div>
         </div>
           <div className="space-y-4 mt-32 ml-10">
-          <Link href="https://github.com/adityakashyap5047/PiTalk" className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" target="_blank">
+          <Link href="https://github.com/adityakashyap5047/PiTalk" className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-[#49b8af] border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" target="_blank">
             View on Github
           </Link>
           <Link href="/forums"

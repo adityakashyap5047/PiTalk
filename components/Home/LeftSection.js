@@ -1,5 +1,4 @@
 import React from 'react'
-import LargerButton from './LargerButton'
 import { AnimatedTestimonialsDemo } from './AnimatedCards'
 
 function LeftSection() {
@@ -16,9 +15,6 @@ function LeftSection() {
         <div className="hidden lg:block">
           <AnimatedTestimonialsDemo/>
         </div>
-
-        {/* Button Section on Larger Screens */}
-        <LargerButton/>
       </div>
   )
 }

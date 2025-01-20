@@ -8,13 +8,13 @@ function KeyFeatures() {
   const { theme } = useTheme();
 
   return (
-    <div className="container mx-auto py-20 px-6">
-      <h3 className="text-5xl font-semibold text-center flex gap-2 justify-center mb-10">
+    <div className="py-10 px-6 bg-sky-700">
+      <h3 className="text-5xl text-[#0E0E5C] font-semibold text-center flex gap-2 justify-center mb-10">
         Key Features
       </h3>
       <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-2">
           <MagicCard
-            className="p-4 cursor-pointer bg-white rounded-lg shadow-md flex justify-center flex-col items-center"
+            className="p-4 cursor-pointer rounded-xl shadow-md flex justify-center flex-col items-center"
             gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
           >
             <svg
@@ -28,7 +28,7 @@ function KeyFeatures() {
             <p>Enjoy instant messaging with friends and family.</p>
           </MagicCard>
           <MagicCard
-            className="p-4 cursor-pointer bg-white rounded-lg shadow-md flex justify-center flex-col items-center"
+            className="p-4 cursor-pointer bg-white rounded-xl shadow-md flex justify-center flex-col items-center "
             gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
           >
 <svg
@@ -44,7 +44,7 @@ function KeyFeatures() {
           <p>Create and join group chats with your loved ones.</p>
           </MagicCard>
           <MagicCard
-            className="p-4 cursor-pointer bg-white rounded-lg shadow-md flex justify-center flex-col items-center"
+            className="p-4 cursor-pointer bg-white rounded-xl shadow-md flex justify-center flex-col items-center"
             gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
           >
           <svg
