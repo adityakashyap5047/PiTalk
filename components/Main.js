@@ -1,7 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IconCloud } from "@/components/magicui/icon-cloud";
+
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
 
 const Main = () => {
+
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+  );
+
   return (
     <div className="max-w-screen-xl mt-10 lg:mt-10 px-4 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:grid lg:grid-cols-12 min-h-[calc(100vh-64px)]">
       {/* Left Content (Text) */}
@@ -16,7 +55,7 @@ const Main = () => {
         </p>
 
         {/* Button Section on Larger Screens */}
-        <div className="hidden space-x-4 lg:block space-y-4 lg:col-span-12 mt-12 lg:mt-16">
+        <div className="hidden space-x-4 lg:block space-y-4 lg:col-span-12 mt-12 lg:mt-16 lg:pb-64">
           {/* View on GitHub Button */}
           <Link href="https://github.com/adityakashyap5047/PiTalk" className="inline-flex cursor-pointer items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" target="_blank">
             View on Github
@@ -30,7 +69,7 @@ const Main = () => {
       </div>
 
       {/* Right Image */}
-      <div className="lg:col-span-5 flex justify-center items-center sm:w-full sm:mt-8">
+      <div className="lg:col-span-5 flex flex-col justify-center items-center sm:w-full sm:mt-8 lg:mt-0">
         <Image
           src="https://demo.themesberg.com/landwind/images/hero.png"
           width={600}
@@ -38,6 +77,9 @@ const Main = () => {
           alt="hero image"
           className="w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl"
         />
+        <div className="hidden lg:block w-80 -mt-16 -ml-36">
+          <IconCloud images={images} className="mt-0"/>
+        </div>
       </div>
 
       {/* Buttons Section (Always below image) */}
