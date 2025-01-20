@@ -1,5 +1,6 @@
 import React from 'react'
 import { AnimatedTestimonialsDemo } from './AnimatedCards'
+import LargerButton from './LargerButton'
 
 function LeftSection() {
   return (
@@ -15,6 +16,7 @@ function LeftSection() {
         <div className="hidden lg:block">
           <AnimatedTestimonialsDemo/>
         </div>
+        <LargerButton/>
       </div>
   )
 }
