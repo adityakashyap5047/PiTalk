@@ -54,7 +54,7 @@ const AboutUs = () => {
   };
 
   return (
-    <section className="bg-gray-100 pb-12">
+    <section className="pb-12 bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           About Us
@@ -63,7 +63,7 @@ const AboutUs = () => {
           {faqData.map((faq, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg p-4 transition hover:shadow-lg"
+              className="bg-sky-700 shadow-md rounded-lg p-4 transition hover:shadow-lg"
             >
               <div
                 className="flex justify-between items-center cursor-pointer"
@@ -73,13 +73,13 @@ const AboutUs = () => {
                   {faq.question}
                 </h3>
                 {activeIndex === index ? (
-                  <FiChevronUp className="text-gray-600" />
+                  <FiChevronUp className="text-white" />
                 ) : (
-                  <FiChevronDown className="text-gray-600" />
+                  <FiChevronDown className="text-white" />
                 )}
               </div>
               {activeIndex === index && (
-                <p className="mt-4 text-gray-600">{faq.answer}</p>
+                <p className="mt-4 text-[#F5DEB3]">{faq.answer}</p>
               )}
             </div>
           ))}

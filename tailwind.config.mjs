@@ -8,13 +8,19 @@ export default {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
+			'gradient-linear': 'linear-gradient(to right, var(--tw-gradient-stops))',
+		},
   		animation: {
   			first: 'moveVertical 30s ease infinite',
   			second: 'moveInCircle 20s reverse infinite',
   			third: 'moveInCircle 40s linear infinite',
   			fourth: 'moveHorizontal 40s ease infinite',
   			fifth: 'moveInCircle 20s ease infinite',
-  			'background-position-spin': 'background-position-spin 3000ms infinite alternate'
+  			'background-position-spin': 'background-position-spin 3000ms infinite alternate',
+  			grid: 'grid 15s linear infinite',
+			'bg-gradient': 'bg-gradient 6s ease infinite'
   		},
   		keyframes: {
   			moveHorizontal: {
@@ -57,7 +63,19 @@ export default {
   				'100%': {
   					backgroundPosition: 'bottom center'
   				}
-  			}
+  			},
+  			grid: {
+  				'0%': {
+  					transform: 'translateY(-50%)'
+  				},
+  				'100%': {
+  					transform: 'translateY(0)'
+  				}
+  			},
+			'bg-gradient': {
+          		'0%, 100%': { 'background-position': '0% 50%' },
+          		'50%': { 'background-position': '100% 50%' },
+        	},
   		},
   		colors: {
   			background: 'hsl(var(--background))',
