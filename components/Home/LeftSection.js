@@ -1,6 +1,6 @@
 import React from 'react'
 import LargerButton from './LargerButton'
-import { AnimatedTestimonialsDemo } from '../AnimatedCards'
+import { AnimatedTestimonialsDemo } from './AnimatedCards'
 
 function LeftSection() {
   return (

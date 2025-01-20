@@ -2,7 +2,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { NeonCard } from "../NeonCard";
+import { NeonCard } from "../Home/NeonCard";
 import Link from "next/link";
 
 export const AnimatedTestimonials = ({
