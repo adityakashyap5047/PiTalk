@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IconCloud } from "@/components/magicui/icon-cloud";
+import { AnimatedTestimonialsDemo } from "./AnimatedCards";
 
 const slugs = [
   "typescript",
@@ -53,6 +54,9 @@ const Main = () => {
           Stay in touch, share stories and laughs, and create lasting memories - 
           all in one place.
         </p>
+        <div className="hidden lg:block">
+          <AnimatedTestimonialsDemo/>
+        </div>
 
         {/* Button Section on Larger Screens */}
         <div className="hidden space-x-4 lg:block space-y-4 lg:col-span-12 mt-12 lg:mt-16 lg:pb-64">
@@ -69,7 +73,7 @@ const Main = () => {
       </div>
 
       {/* Right Image */}
-      <div className="lg:col-span-5 flex flex-col justify-center items-center sm:w-full sm:mt-8 lg:mt-0">
+      <div className="lg:col-span-5 flex flex-col justify-start items-center sm:w-full sm:mt-8 lg:mt-0">
         <Image
           src="https://demo.themesberg.com/landwind/images/hero.png"
           width={600}
