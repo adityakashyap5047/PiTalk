@@ -12,7 +12,7 @@ const Footer = () => {
           <a href="/terms-of-service" target="_blank" className="text-gray-400 hover:text-white transition">
             Terms of Service
           </a>
-          <a href="#" className="text-gray-400 hover:text-white transition">
+          <a href="/contact-us" target="_blank" className="text-gray-400 hover:text-white transition">
             Contact Us
           </a>
         </div>
