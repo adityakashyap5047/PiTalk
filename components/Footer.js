@@ -6,7 +6,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} PiTalk. All rights reserved.
         </p>
         <div className="mt-4 flex justify-center space-x-6">
-          <a href="#" className="text-gray-400 hover:text-white transition">
+          <a href="/privacy-policy" target="_blank" className="text-gray-400 hover:text-white transition">
             Privacy Policy
           </a>
           <a href="#" className="text-gray-400 hover:text-white transition">
