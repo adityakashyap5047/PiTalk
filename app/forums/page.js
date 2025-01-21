@@ -38,9 +38,10 @@ const topics = [
 
 const Forums = () => {
   return (
-    <div className="container mx-auto min-h-[calc(100vh-64px)] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
-        <h3 className="text-5xl font-semibold text-center flex gap-2 justify-center ">Discussion Forums</h3>
-
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
+        <h3 className="text-4xl sm:text-5xl py-5 text-[#0E0E5C] font-semibold gap-2 text-center">
+            Discussion Forums
+        </h3>
         <div className="flex flex-wrap justify-center">
             {topics.map((topic) => {
                 return <div key={topic.img} className='shadow-lg bg-sky-200 lg:w-1/4 m-4 flex justify-center flex-col items-center py-10 rounded-xl gap-4'>
