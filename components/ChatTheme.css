@@ -1,27 +1,29 @@
+/* Define the keyframes for the gradient animation */
+@keyframes bg-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Apply the gradient background and animation to the .main class */
+.str-chat__channel-header, .str-chat__empty-channel, .str-chat__date-separator, .str-chat__channel, .str-chat__message-list-scroll, .str-chat__ul, .str-chat__message, .str-chat__message-input {
+    background: linear-gradient(to right, #080F58, purple, #080F58); /* Gradient colors */
+    /* background-size: 200% 200%; Make the gradient larger than the element */
+    animation: bg-gradient 3s ease infinite; /* Animate the gradient */
+}
+
 .str-chat__channel-header{
-    background-color: pink;
-}
-
-.str-chat__empty-channel{
-    background-color: pink;
-}
-
-.str-chat__date-separator{
-    background-color: pink;
-    width: 100%;
+    color: white;
 }
 
 .str-chat__channel{
-    background-color: pink;
     margin: 0;
-}
-
-.str-chat__message-list-scroll{
-    background-color: pink;
-}
-
-.str-chat__ul{
-    background-color: pink;
 }
 
 .str-chat__message{
@@ -30,5 +32,10 @@
 }
 
 .str-chat__message-input{
-    background-color: pink;
+    color: white;
+}
+
+/*Changing the color of text in text-area*/
+.rta__textarea:focus {
+    color: white !important;
 }
