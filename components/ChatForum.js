@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useCreateChatClient, Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
 
 import 'stream-chat-react/dist/css/v2/index.css';
+import './ChatTheme.css'
 
 
 
@@ -44,7 +45,7 @@ const ChatForum = ({slug, clerkUser}) => {
       <Channel channel={channel}>
         <Window>
           <ChannelHeader />
-          <div className="min-h-[calc(100vh-283px)]">
+          <div className="min-h-[calc(100vh-296px)]">
             <MessageList />
           </div>
           <MessageInput />

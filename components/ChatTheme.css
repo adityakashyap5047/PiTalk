@@ -1,0 +1,34 @@
+.str-chat__channel-header{
+    background-color: pink;
+}
+
+.str-chat__empty-channel{
+    background-color: pink;
+}
+
+.str-chat__date-separator{
+    background-color: pink;
+    width: 100%;
+}
+
+.str-chat__channel{
+    background-color: pink;
+    margin: 0;
+}
+
+.str-chat__message-list-scroll{
+    background-color: pink;
+}
+
+.str-chat__ul{
+    background-color: pink;
+}
+
+.str-chat__message{
+    margin-top: 10px;
+    margin-bottom: 0 !important;
+}
+
+.str-chat__message-input{
+    background-color: pink;
+}

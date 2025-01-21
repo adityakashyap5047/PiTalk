@@ -2,7 +2,7 @@ const Footer = () => {
   //Navbar -> 60px
   //Footer -> 108px
   return (
-    <footer className="bg-gray-800 text-white py-6 w-full">
+    <footer className="bg-gray-800 text-white py-8 w-full">
       <div className="container mx-auto px-4 text-center">
         <p className="text-sm">
           &copy; {new Date().getFullYear()} PiTalk. All rights reserved.
