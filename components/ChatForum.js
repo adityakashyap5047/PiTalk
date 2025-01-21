@@ -44,7 +44,9 @@ const ChatForum = ({slug, clerkUser}) => {
       <Channel channel={channel}>
         <Window>
           <ChannelHeader />
-          <MessageList />
+          <div className="min-h-[calc(100vh-283px)]">
+            <MessageList />
+          </div>
           <MessageInput />
         </Window>
         <Thread />
