@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
+import { ModeToggle } from './mode-toggle';
 // import { useUser } from '@clerk/nextjs'
 
 const Navbar = () => {
@@ -13,6 +14,9 @@ const Navbar = () => {
         <div className="container mx-auto flex justify-between items-center">
             <Link href="/" className="text-xl font-bold">PiTalk</Link>
             <ul className="flex space-x-4 items-center">
+                <li>
+                    <ModeToggle/>
+                </li>
                 <li>
                     <Link href="/" className="hover:text-gray-200">Home</Link>
                 </li>
