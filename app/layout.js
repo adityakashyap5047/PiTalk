@@ -28,17 +28,17 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
     <html lang="en">
       <link rel="icon" href="/pi_symbol_logo.png" sizes="16x16"/>
-      <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-      >
+        >
+        <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
         <Navbar/>
         <main className="flex-grow">
             {children}
           </main>
         <Footer/>
-      </body>
       </ThemeProvider>
+      </body>
     </html>
     </ClerkProvider>
   );
