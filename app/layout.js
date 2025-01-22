@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
+      <link rel="icon" href="/pi_symbol_logo.png" sizes="16x16"/>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
