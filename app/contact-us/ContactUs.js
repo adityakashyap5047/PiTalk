@@ -29,9 +29,8 @@ const ContactUs = () => {
         },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
-        setFormData({ name: '', email: '', message: '', contactNumber: '' });
+        // setFormData({ name: '', email: '', message: '', contactNumber: '' });
         setStatus('Message sent successfully!');
       } else {
         setStatus('Failed to send message. Please try again.');
