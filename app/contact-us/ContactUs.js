@@ -19,7 +19,7 @@ const ContactPage = () => {
       email: '',
       contactNumber: '',
       message: '',
-      queryType: '', // Default to an empty string
+      queryType: '', 
     },
   });
 
@@ -49,8 +49,8 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-[645] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient text-gray-800 flex justify-center items-center">
-      <div className="w-full max-w-2xl text-black rounded-lg p-6">
+    <div className="min-h-[645] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient flex justify-center items-center">
+      <div className="w-full max-w-2xl text-white rounded-lg p-6">
         <h1 className="text-2xl font-semibold mb-6 text-center">Contact Us</h1>
 
         <Form {...form}>
@@ -59,18 +59,32 @@ const ContactPage = () => {
             onSubmit={form.handleSubmit(handleSubmit)} // Integrate react-hook-form handleSubmit
           >
             {/* Name Field */}
+            <div>
             <FormField
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>First Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your name" {...field} />
+                    <Input placeholder="Enter your First Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <FormField
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your Last Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            </div>
 
             {/* Email Field */}
             <FormField
