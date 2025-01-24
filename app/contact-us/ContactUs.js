@@ -188,6 +188,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Vortex } from "@/components/ui/vortex";
 
 const SignupFormDemo = () => {
   const handleSubmit = (e) => {
@@ -195,41 +196,48 @@ const SignupFormDemo = () => {
     console.log("Form submitted");
   };
   return (
-    (<div
-      className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+    (
+    <div
+      className="max-w-md w-full mx-auto p-4 md:p-8 ">
+      <Vortex
+    backgroundColor="black"
+    rangeY={800}
+    particleCount={1000}
+    baseHue={10}
+    >
+      <h2 className="font-bold text-xl text-neutral-200 dark:text-neutral-800">
         Welcome to PiTalk
       </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+      <p className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
         If you have any query then you can reach out to us
       </p>
       <form className="my-8" onSubmit={handleSubmit}>
         <div
           className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
+            <Label htmlFor="firstname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">First name</Label>
             <Input id="firstname" placeholder="Enter your First Name" type="text" />
           </LabelInputContainer>
           <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
+            <Label htmlFor="lastname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Last name</Label>
             <Input id="lastname" placeholder="Enter your Last Name" type="text" />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
+          <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Email Address</Label>
           <Input id="email" placeholder="Enter your emial id here" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Email Verification code</Label>
+          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Email Verification code</Label>
           <Input id="password" placeholder="Enter your password here" type="password" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Contact Number</Label>
+          <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Contact Number</Label>
           <Input id="email" placeholder="Enter your emial id here" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Verify your contact number</Label>
-          <Input id="password" placeholder="Enter your password here" type="password" />
+          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Verify your contact number</Label>
+          <Input id="password" placeholder="Enter your password here" type="number" required/>
         </LabelInputContainer>
       
         <button
@@ -238,11 +246,8 @@ const SignupFormDemo = () => {
           Submit &rarr;
           <BottomGradient />
         </button>
-
-        <div
-          className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-
       </form>
+      </Vortex>
     </div>)
   );
 }
