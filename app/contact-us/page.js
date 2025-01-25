@@ -3,7 +3,9 @@ import ContactUs from './ContactUs'
 
 function page() {
   return (
-    <ContactUs/>
+    <div className='h-full'>
+      <ContactUs/>
+    </div>
   )
 }
 
