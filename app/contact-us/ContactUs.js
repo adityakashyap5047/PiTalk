@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Vortex } from "@/components/ui/vortex";
+import { Textarea } from "@/components/ui/textarea";
 
 const SignupFormDemo = () => {
   const handleSubmit = (e) => {
@@ -13,16 +14,13 @@ const SignupFormDemo = () => {
   return (
     (
     <div
-      className="w-full mx-auto">
-      <Vortex
+      className="mx-auto max-w-screen-md my-2">
+      {/* <Vortex
         backgroundColor="black"
-        rangeY={800}
+        rangeY={700}
         particleCount={1000}
         baseHue={10}
-      >
-      <p className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-        If you have any query then you can reach out to us
-      </p>
+      > */}
       <form onSubmit={handleSubmit}>
         <div
           className="flex flex-col md:flex-row md:space-x-2">
@@ -35,23 +33,48 @@ const SignupFormDemo = () => {
             <Input id="lastname" placeholder="Enter your Last Name" type="text" />
           </LabelInputContainer>
         </div>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Email Address</Label>
-          <Input id="email" placeholder="Enter your emial id here" type="email" />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Email Verification code</Label>
-          <Input id="password" placeholder="Enter your password here" type="password" />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Contact Number</Label>
-          <Input id="email" placeholder="Enter your emial id here" type="email" />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Verify your contact number</Label>
-          <Input id="password" placeholder="Enter your password here" type="number" required/>
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
+        <div className="flex flex-col md:flex-row md:space-x-2">
+  <LabelInputContainer className="mb-4 md:w-1/2">
+    <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Email Address
+    </Label>
+    <Input id="email" placeholder="Enter your email id here" type="email" />
+  </LabelInputContainer>
+  <LabelInputContainer className="mb-4 md:w-1/4">
+    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Email Verification Code
+    </Label>
+    <Input id="password" placeholder="Enter your password here" type="password" />
+  </LabelInputContainer>
+  <LabelInputContainer className="mb-4 md:w-1/4">
+    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Email Verification Code
+    </Label>
+    <Input id="password" placeholder="Enter your password here" type="password" />
+  </LabelInputContainer>
+</div>
+        <div className="flex flex-col md:flex-row md:space-x-2">
+  <LabelInputContainer className="mb-4 md:w-1/2">
+    <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Contact Number
+    </Label>
+    <Input id="email" placeholder="Enter your contact number" type="email" />
+  </LabelInputContainer>
+  <LabelInputContainer className="mb-4 md:w-1/4">
+    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Email Verification Code
+    </Label>
+    <Input id="password" placeholder="Enter your password here" type="password" />
+  </LabelInputContainer>
+  <LabelInputContainer className="mb-4 md:w-1/4">
+    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+      Email Verification Code
+    </Label>
+    <Input id="password" placeholder="Enter your password here" type="password" />
+  </LabelInputContainer>
+</div>
+<div className="flex flex-col md:flex-row md:space-x-2">
+        <LabelInputContainer className="mb-4 md:w-1/2">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
           <Input id="password" placeholder="Enter your password here" type="number" required/>
         </LabelInputContainer>
@@ -59,9 +82,10 @@ const SignupFormDemo = () => {
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
           <Input id="password" placeholder="Enter your password here" type="number" required/>
         </LabelInputContainer>
+        </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Description</Label>
-          <Input id="password" placeholder="Enter your password here" type="number" required/>
+          <Textarea id="password" placeholder="Write a description" required/>
         </LabelInputContainer>
       
         <button
@@ -71,7 +95,7 @@ const SignupFormDemo = () => {
           <BottomGradient />
         </button>
       </form>
-      </Vortex>
+      {/* </Vortex> */}
     </div>)
   );
 }
