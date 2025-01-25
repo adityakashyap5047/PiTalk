@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { svg_retry, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
 import { Loader2, Mail } from "lucide-react";
+import { Select } from "@/components/ui/select";
 
 const SignupFormDemo = () => {
   const handleSubmit = (e) => {
@@ -29,11 +30,11 @@ const SignupFormDemo = () => {
           className="flex flex-col md:flex-row md:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="firstname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">First name</Label>
-            <Input id="firstname" placeholder="Enter your First Name" type="text" />
+            <Input id="firstname" placeholder="Enter your First Name" type="text" required/>
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Last name</Label>
-            <Input id="lastname" placeholder="Enter your Last Name" type="text" />
+            <Input id="lastname" placeholder="Enter your Last Name" type="text" required/>
           </LabelInputContainer>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-2">
@@ -41,7 +42,7 @@ const SignupFormDemo = () => {
     <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
       Email Address
     </Label>
-    <Input id="email" placeholder="Enter your email id here" type="email" />
+    <Input id="email" placeholder="Enter your email id here" type="email" required/>
   </LabelInputContainer>
   <LabelInputContainer className="mb-4 md:w-1/4">
     <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
@@ -69,14 +70,8 @@ const SignupFormDemo = () => {
     </Label>
     <Input id="password" placeholder="Enter your password here" type="password" />
   </LabelInputContainer>
-  {/* <LabelInputContainer className="mb-4 md:w-1/4">
-    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-      Email Verification Code
-    </Label>
-    <Input id="password" placeholder="Enter your password here" type="password" />
-  </LabelInputContainer> */}
-  <Button variant="secondary">Verify your Email {svg_verify}</Button>
-  <Button disabled>
+  <Button variant="secondary" type="button">Verify your Email {svg_verify}</Button>
+  {/* <Button disabled>
       Verifying ...
       <span className="animate-bounce">{svg_verifying}</span>
     </Button>
@@ -87,16 +82,21 @@ const SignupFormDemo = () => {
     <Button>
       Retry
       {svg_retry}
-    </Button>
+    </Button> */}
 </div>
 <div className="flex flex-col md:flex-row md:space-x-2">
         <LabelInputContainer className="mb-4 md:w-1/2">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
-          <Input id="password" placeholder="Enter your password here" type="number" required novalidation/>
+          <Select>
+          <option value="">Select a query</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </Select>
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
-          <Input id="password" placeholder="Enter your password here" type="number" required/>
+          <Input id="password" placeholder="Enter your title" required/>
         </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
