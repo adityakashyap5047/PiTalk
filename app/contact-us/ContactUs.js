@@ -50,14 +50,9 @@ const SignupFormDemo = () => {
     </Label>
     <Input id="password" placeholder="Enter your password here" type="password" />
   </LabelInputContainer>
-  <LabelInputContainer className="mb-4 md:w-1/4">
-    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-      Email Verification Code
-    </Label>
-    <Input id="password" placeholder="Enter your password here" type="password" />
-  </LabelInputContainer>
+  <Button variant="secondary" className="mt-10 h-9" type="button">Verify your Email {svg_verify}</Button>
 </div>
-        <div className="flex flex-col md:flex-row md:space-x-2">
+        {/* <div className="flex flex-col md:flex-row md:space-x-2">
   <LabelInputContainer className="mb-4 md:w-1/2">
     <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
       Contact Number
@@ -82,12 +77,12 @@ const SignupFormDemo = () => {
     <Button>
       Retry
       {svg_retry}
-    </Button> */}
-</div>
+    </Button> 
+</div> */}
 <div className="flex flex-col md:flex-row md:space-x-2">
         <LabelInputContainer className="mb-4 md:w-1/2">
-          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
-          <Select>
+          <Label htmlFor="queryType" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
+          <Select id="queryType" required>
           <option value="">Select a query</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
@@ -95,13 +90,13 @@ const SignupFormDemo = () => {
         </Select>
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
-          <Input id="password" placeholder="Enter your title" required/>
+          <Label htmlFor="title" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
+          <Input id="title" placeholder="Enter your title" required/>
         </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Description</Label>
-          <Textarea id="password" placeholder="Write a description" required/>
+          <Label htmlFor="description" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Description</Label>
+          <Textarea id="description" placeholder="Write a description" required/>
         </LabelInputContainer>
       
         <button
