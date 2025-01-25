@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Vortex } from "@/components/ui/vortex";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { lock_symbol, svg_lock } from "@/components/svg";
 
 const SignupFormDemo = () => {
   const handleSubmit = (e) => {
@@ -73,7 +74,7 @@ const SignupFormDemo = () => {
     </Label>
     <Input id="password" placeholder="Enter your password here" type="password" />
   </LabelInputContainer> */}
-  <Button>Verify your code</Button>
+  <Button>Verify your Email {svg_lock}</Button>
 </div>
 <div className="flex flex-col md:flex-row md:space-x-2">
         <LabelInputContainer className="mb-4 md:w-1/2">
