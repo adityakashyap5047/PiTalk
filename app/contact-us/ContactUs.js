@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Vortex } from "@/components/ui/vortex";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { lock_symbol, svg_lock } from "@/components/svg";
+import { svg_retry, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
+import { Loader2, Mail } from "lucide-react";
 
 const SignupFormDemo = () => {
   const handleSubmit = (e) => {
@@ -74,12 +75,24 @@ const SignupFormDemo = () => {
     </Label>
     <Input id="password" placeholder="Enter your password here" type="password" />
   </LabelInputContainer> */}
-  <Button>Verify your Email {svg_lock}</Button>
+  <Button variant="secondary">Verify your Email {svg_verify}</Button>
+  <Button disabled>
+      Verifying ...
+      <span className="animate-bounce">{svg_verifying}</span>
+    </Button>
+    <Button>
+      Verified
+      {svg_verified}
+    </Button>
+    <Button>
+      Retry
+      {svg_retry}
+    </Button>
 </div>
 <div className="flex flex-col md:flex-row md:space-x-2">
         <LabelInputContainer className="mb-4 md:w-1/2">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
-          <Input id="password" placeholder="Enter your password here" type="number" required/>
+          <Input id="password" placeholder="Enter your password here" type="number" required novalidation/>
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
