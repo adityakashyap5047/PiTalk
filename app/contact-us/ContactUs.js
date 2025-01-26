@@ -19,6 +19,7 @@ import axios from 'axios';
 const SignupFormDemo = () => {
 
   const [isSentPasscode, setIsSentPasscode] = useState(false);
+  const [isSentError, setIsSentError] = useState(false);
   const [isSendingPasscode, setIsSendingPasscode] = useState(false);
   
   const { toast } = useToast();
@@ -53,6 +54,13 @@ const SignupFormDemo = () => {
       setIsSendingPasscode(true);
       const { firstName, lastName, email } = form.getValues();
 
+      if(!firstName || !lastName || !email){
+        setIsSentError(true);
+        setIsSendingPasscode(false);
+        return;
+      }
+      
+      setIsSentError(false);
       const code = () => {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
@@ -75,6 +83,7 @@ const SignupFormDemo = () => {
       setIsSentPasscode(true);
     } catch (error) {
       setIsSendingPasscode(false);
+
       console.log(error)
     }
 
@@ -131,7 +140,7 @@ const SignupFormDemo = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem className="md:w-1/2">
-                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">FirstName</FormLabel>
+                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">First Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your First Name"
                       {...field}
@@ -139,7 +148,7 @@ const SignupFormDemo = () => {
                           field.onChange(e)
                         }
                       } 
-                    />
+                      />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -150,7 +159,7 @@ const SignupFormDemo = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem className="md:w-1/2">
-                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">FirstName</FormLabel>
+                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Last Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your Last Name"
                       {...field}
@@ -170,8 +179,8 @@ const SignupFormDemo = () => {
               name="email"
               control={form.control}
               render={({ field }) => (
-                <FormItem className={!isSentPasscode ? `md:w-3/4` : `md:w-1/2`}>
-                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">FirstName</FormLabel>
+                <FormItem className="md:w-full">
+                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Email</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your Email Address"
                       {...field}
@@ -181,24 +190,27 @@ const SignupFormDemo = () => {
                       } 
                     />
                   </FormControl>
+                  {isSentError && <p className='text-sm text-red-600'>Fill all the above fields to get the passcode.</p>}
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {!isSentPasscode && <Button variant="secondary" className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto" type="button" onClick={handleSendPasscode}
+            {!isSentPasscode && <Button variant="secondary" className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto" type="button" disabled={isSendingPasscode} onClick={handleSendPasscode}
             >{!isSendingPasscode ? (
-              <>Get Passcode {svg_send}</>
+              <>
+                Get Passcode {svg_send}
+              </>
             )  : (
               <>Sending <span className="animate-bounce">{svg_verifying}</span></>
             )}</Button>}
-        {isSentPasscode && <div className="flex flex-col md:flex-row md:space-x-2"><FormField
+        {isSentPasscode && <div className="flex flex-row space-x-2 w-full"><FormField
               name="passcode"
               control={form.control}
               render={({ field }) => (
-                <FormItem className="md:w-1/2">
-                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Veirfy your Email</FormLabel>
+                <FormItem className="w-1/2">
+                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Passcode</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter verification code"
+                    <Input placeholder="Enter Passcode"
                       {...field}
                       onChange={(e) => {
                           field.onChange(e)
@@ -210,8 +222,8 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-  <Button variant="secondary" className="mt-10 h-9" type="button" 
->Verify your Email {svg_verify}</Button></div>}
+  <Button variant="secondary" className="mt-9 h-9 w-1/2 md:w-auto mx-auto" type="button" 
+>Verify Passcode {svg_verify}</Button></div>}
 </div>
         <div>
           {/* <div className="flex flex-col md:flex-row md:space-x-2">
