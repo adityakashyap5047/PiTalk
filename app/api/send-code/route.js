@@ -3,10 +3,10 @@ import nodemailer from 'nodemailer';
 export async function POST(request) {
 
     try {
-        const { name, email, passcode} = await request.json();
+        const { name, email, Passcode} = await request.json();
     
         //verify the form data
-        if(!email || !passcode || !passcode){
+        if(!name || !email || !Passcode){
             return Response.json({ message: 'All fields are required.' }, {status: 400}); 
         }
 
@@ -24,12 +24,12 @@ export async function POST(request) {
             from: process.env.EMAIL_USER,
             to: email,
             subject: `Verify Your Email for PiTalk`,
-            text: `Hello ${name},\n\nYour PiTalk verification passcode is: ${passcode}\n\nPlease enter this passcode to verify your email address.\n\nIf you did not request this, please ignore this email.\n\nBest Regards,\nThe PiTalk Team`,
+            text: `Hello ${name},\n\nYour PiTalk verification Passcode is: ${Passcode}\n\nPlease enter this Passcode to verify your email address.\n\nIf you did not request this, please ignore this email.\n\nBest Regards,\nThe PiTalk Team`,
             html: `
                 <p>Hello <strong>${name}</strong>,</p>
-                <p>Your <strong>PiTalk</strong> verification passcode is:</p>
-                <h2 style="color: #4CAF50;">${passcode}</h2>
-                <p>Please enter this passcode to verify your email address.</p>
+                <p>Your <strong>PiTalk</strong> verification Passcode is:</p>
+                <h2 style="color: #4CAF50;">${Passcode}</h2>
+                <p>Please enter this Passcode to verify your email address.</p>
                 <p>If you did not request this, please ignore this email.</p>
                 <br/>
                 <p>Best Regards,</p>

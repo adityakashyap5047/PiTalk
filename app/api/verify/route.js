@@ -1,10 +1,10 @@
 
 export async function POST(request) {
     try {
-        const { name, email, passcode} = await request.json();
+        const { Passcode, passcode} = await request.json();
     
         //verify the form data
-        if(!email || !passcode){
+        if(!Passcode || !passcode){
             return Response.json({ error: 'All fields are required.' }, {status: 400}); 
         }
         
