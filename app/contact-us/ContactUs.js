@@ -14,10 +14,11 @@ import { useState } from 'react';
 import { ToastAction } from "@/components/ui/toast"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
+import axios from 'axios';
 
 const SignupFormDemo = () => {
 
-  const [isVerify, setIsVerify] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   
   const { toast } = useToast();
 
@@ -26,7 +27,7 @@ const SignupFormDemo = () => {
     firstName: z.string().nonempty("First Name cannot be empty"),
     lastName: z.string().nonempty("Last Name cannot be empty"),
     email: z.string().email({message: "Invalid email address"}),
-    verifyEmail: z.string().nonempty("Give your verification code"),
+    passcode: z.string().nonempty("Give your verification code"),
     category: z.string().nonempty("Select a Category"),
     title: z.string().nonempty("Please enter a title"),
     description: z.string().nonempty("give the description about your query")
@@ -39,24 +40,43 @@ const SignupFormDemo = () => {
       firstName: '',
       lastName: '',
       email: '',
-      verifyEmail: '',
+      passcode: '',
       category: '',
       title: '',
       description: ''
     }
   })
 
-  // const onClick= () => {
-  //   toast({
-  //     title: "Scheduled: Catch up ",
-  //     description: "Friday, February 10, 2023 at 5:57 PM",
-  //     action: (
-  //       <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-  //     ),
-  //   })
-  // }
+  
+
+  const handleClick = async () => {
+    toast({
+      title: "Scheduled: Catch up ",
+      description: "Friday, February 10, 2023 at 5:57 PM",
+      action: (
+        <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+      ),
+    })
+    try{
+
+      const { firstName, lastName, email, passcode } = form.getValues();
+
+      const response = await axios.post('/api/verify', {
+        name: `${firstName} ${lastName}`,
+        email,
+        passcode
+      })
+      console.log(response);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleSubmit = async (e) => {
+    if(!isVerified){
+      console.log("not verified");
+      return;
+    }
     console.log("form submitted");
   }
 
@@ -135,7 +155,7 @@ const SignupFormDemo = () => {
               )}
             />
         <FormField
-              name="verifyEmail"
+              name="passcode"
               control={form.control}
               render={({ field }) => (
                 <FormItem className="md:w-1/4">
@@ -153,15 +173,7 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={() => {
-        toast({
-          title: "Scheduled: Catch up ",
-          description: "Friday, February 10, 2023 at 5:57 PM",
-          action: (
-            <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-          ),
-        })
-      }}
+  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={handleClick}
 >Verify your Email {svg_verify}</Button>
 </div>
         <div>
