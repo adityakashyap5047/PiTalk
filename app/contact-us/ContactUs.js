@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import * as z from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -9,12 +11,47 @@ import { Button } from "@/components/ui/button";
 import { svg_retry, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
 import { Loader2, Mail } from "lucide-react";
 import { Select } from "@/components/ui/select";
+import { useState } from 'react';
+import { ToastAction } from "@/components/ui/toast"
+import { Form } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
 
 const SignupFormDemo = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  };
+
+  const [isVerify, setIsVerify] = useState(false);
+  
+  const { toast } = useToast();
+
+  //schema for form validation
+  const schema = z.object({
+    firstName: z.string({message: "First Name can not be empty"}),
+  })
+
+  //zod implementation
+  const form = useForm<z.infer>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: ''
+    }
+  })
+
+  // const onClick= () => {
+  //   toast({
+  //     title: "Scheduled: Catch up ",
+  //     description: "Friday, February 10, 2023 at 5:57 PM",
+  //     action: (
+  //       <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+  //     ),
+  //   })
+  // }
+
+  const handleSubmit = async (data) => {
+    console.log("form submitted");
+  }
+
+
   return (
     (
     <div
@@ -25,16 +62,17 @@ const SignupFormDemo = () => {
         particleCount={1000}
         baseHue={10}
       > */}
+      <Form {...form}>
       <form onSubmit={handleSubmit}>
         <div
           className="flex flex-col md:flex-row md:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="firstname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">First name</Label>
-            <Input id="firstname" placeholder="Enter your First Name" type="text" required/>
+            <Input id="firstname" placeholder="Enter your First Name" type="text"/>
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Last name</Label>
-            <Input id="lastname" placeholder="Enter your Last Name" type="text" required/>
+            <Input id="lastname" placeholder="Enter your Last Name" type="text"/>
           </LabelInputContainer>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-2">
@@ -42,7 +80,7 @@ const SignupFormDemo = () => {
     <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
       Email Address
     </Label>
-    <Input id="email" placeholder="Enter your email id here" type="email" required/>
+    <Input id="email" placeholder="Enter your email id here" type="email"/>
   </LabelInputContainer>
   <LabelInputContainer className="mb-4 md:w-1/4">
     <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
@@ -50,7 +88,16 @@ const SignupFormDemo = () => {
     </Label>
     <Input id="password" placeholder="Enter your password here" type="password" />
   </LabelInputContainer>
-  <Button variant="secondary" className="mt-10 h-9" type="button">Verify your Email {svg_verify}</Button>
+  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={() => {
+        toast({
+          title: "Scheduled: Catch up ",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+          action: (
+            <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+          ),
+        })
+      }}
+>Verify your Email {svg_verify}</Button>
 </div>
         {/* <div className="flex flex-col md:flex-row md:space-x-2">
   <LabelInputContainer className="mb-4 md:w-1/2">
@@ -82,7 +129,7 @@ const SignupFormDemo = () => {
 <div className="flex flex-col md:flex-row md:space-x-2">
         <LabelInputContainer className="mb-4 md:w-1/2">
           <Label htmlFor="queryType" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Select the query</Label>
-          <Select id="queryType" required>
+          <Select id="queryType">
           <option value="">Select a query</option>
           <option value="option1">Option 1</option>
           <option value="option2">Option 2</option>
@@ -91,12 +138,12 @@ const SignupFormDemo = () => {
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="title" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Title</Label>
-          <Input id="title" placeholder="Enter your title" required/>
+          <Input id="title" placeholder="Enter your title"/>
         </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="description" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Description</Label>
-          <Textarea id="description" placeholder="Write a description" required/>
+          <Textarea id="description" placeholder="Write a description"/>
         </LabelInputContainer>
       
         <button
@@ -106,6 +153,7 @@ const SignupFormDemo = () => {
           <BottomGradient />
         </button>
       </form>
+      </Form>
       {/* </Vortex> */}
     </div>)
   );
