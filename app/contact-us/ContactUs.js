@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Vortex } from "@/components/ui/vortex";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { svg_retry, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
+import { svg_retry, svg_send, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
 import { Select } from "@/components/ui/select";
 import { useState } from 'react';
 import { ToastAction } from "@/components/ui/toast"
@@ -18,7 +18,8 @@ import axios from 'axios';
 
 const SignupFormDemo = () => {
 
-  const [isVerified, setIsVerified] = useState(false);
+  const [isSentPasscode, setIsSentPasscode] = useState(false);
+  const [isSendingPasscode, setIsSendingPasscode] = useState(false);
   
   const { toast } = useToast();
 
@@ -47,9 +48,9 @@ const SignupFormDemo = () => {
     }
   })
 
-  const handleEmailVerification = async () => {
+  const handleSendPasscode = async () => {
     try{
-
+      setIsSendingPasscode(true);
       const { firstName, lastName, email } = form.getValues();
 
       const code = () => {
@@ -70,7 +71,10 @@ const SignupFormDemo = () => {
         passcode
       })
       console.log(response);
+      setIsSendingPasscode(false);
+      setIsSentPasscode(true);
     } catch (error) {
+      setIsSendingPasscode(false);
       console.log(error)
     }
 
@@ -166,7 +170,7 @@ const SignupFormDemo = () => {
               name="email"
               control={form.control}
               render={({ field }) => (
-                <FormItem className="md:w-1/2">
+                <FormItem className={!isSentPasscode ? `md:w-3/4` : `md:w-1/2`}>
                   <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">FirstName</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your Email Address"
@@ -181,11 +185,17 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-        <FormField
+            {!isSentPasscode && <Button variant="secondary" className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto" type="button" onClick={handleSendPasscode}
+            >{!isSendingPasscode ? (
+              <>Get Passcode {svg_send}</>
+            )  : (
+              <>Sending <span className="animate-bounce">{svg_verifying}</span></>
+            )}</Button>}
+        {isSentPasscode && <div className="flex flex-col md:flex-row md:space-x-2"><FormField
               name="passcode"
               control={form.control}
               render={({ field }) => (
-                <FormItem className="md:w-1/4">
+                <FormItem className="md:w-1/2">
                   <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">Veirfy your Email</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter verification code"
@@ -200,8 +210,8 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={handleEmailVerification}
->Verify your Email {svg_verify}</Button>
+  <Button variant="secondary" className="mt-10 h-9" type="button" 
+>Verify your Email {svg_verify}</Button></div>}
 </div>
         <div>
           {/* <div className="flex flex-col md:flex-row md:space-x-2">

@@ -7,7 +7,7 @@ export async function POST(request) {
     
         //verify the form data
         if(!email || !passcode || !passcode){
-            return Response.json({ error: 'All fields are required.' }, {status: 400}); 
+            return Response.json({ message: 'All fields are required.' }, {status: 400}); 
         }
 
         //authentication the credentials of user
