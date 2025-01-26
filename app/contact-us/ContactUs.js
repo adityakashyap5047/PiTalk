@@ -47,7 +47,34 @@ const SignupFormDemo = () => {
     }
   })
 
-  
+  const handleEmailVerification = async () => {
+    try{
+
+      const { firstName, lastName, email } = form.getValues();
+
+      const code = () => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < 6; i++) {
+          const randomIndex = Math.floor(Math.random() * characters.length);
+          result += characters[randomIndex];
+        }
+        return result;
+      }
+
+      const passcode = code();
+
+      const response = await axios.post('/api/send-code', {
+        name: `${firstName} ${lastName}`,
+        email,
+        passcode
+      })
+      console.log(response);
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   const handleClick = async () => {
     toast({
@@ -173,7 +200,7 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={handleClick}
+  <Button variant="secondary" className="mt-10 h-9" type="button" onClick={handleEmailVerification}
 >Verify your Email {svg_verify}</Button>
 </div>
         <div>
