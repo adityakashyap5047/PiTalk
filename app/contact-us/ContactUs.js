@@ -9,7 +9,6 @@ import { Vortex } from "@/components/ui/vortex";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { svg_retry, svg_verified, svg_verify, svg_verifying } from "@/components/svg";
-import { Loader2, Mail } from "lucide-react";
 import { Select } from "@/components/ui/select";
 import { useState } from 'react';
 import { ToastAction } from "@/components/ui/toast"
@@ -31,7 +30,6 @@ const SignupFormDemo = () => {
   const form = useForm<z.infer>({
     resolver: zodResolver(schema),
     defaultValues: {
-      username: '',
       email: '',
       password: ''
     }
