@@ -94,7 +94,7 @@ const SignupFormDemo = () => {
       const response = await axios.post("/api/send-code", {
         name: `${firstName} ${lastName}`,
         email,
-        Passcode,
+        Passcode: generatedPasscode,
       });
       console.log(response);
       setIsSendingPasscode(false);
@@ -123,21 +123,23 @@ const SignupFormDemo = () => {
       }
 
       setIsVerifyError(false);
-
       const response = await axios.post("/api/verify-code", {
         Passcode,
         passcode
       });
+      console.log(response)
       setIsVerifyingPasscode(false);
-      if(!response.ok){
-        console.log("Hello");
-      } else{
-        console.log("Hii");
+      if (response.status === 200) {
+        setIsVerifyError(false);
+        setIsVerifiedPasscode(true);
+      } else {
+        setIsVerifiedPasscode(false);
+        setIsVerifyError(true);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsVerifyingPasscode(false);
-      setIsVerifiedPasscode(false);
+      setIsVerifyError(true);
     }
   };
 
@@ -227,7 +229,7 @@ const SignupFormDemo = () => {
                 </FormItem>
               )}
             />
-            {isSentPasscode && (
+            {!isSentPasscode && (
               <Button
                 variant="secondary"
                 className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto"
@@ -245,7 +247,7 @@ const SignupFormDemo = () => {
                 )}
               </Button>
             )}
-            {!isSentPasscode && (
+            {isSentPasscode && (
               <div className="flex flex-row space-x-2 w-full">
                 <FormField
                   name="passcode"
@@ -258,6 +260,7 @@ const SignupFormDemo = () => {
                       <FormControl>
                         <Input
                           placeholder="Enter Passcode"
+                          disabled={isVerifiedPasscode || isVerifyingPasscode}
                           {...field}
                           onChange={(e) => {
                             field.onChange(e);
@@ -278,15 +281,28 @@ const SignupFormDemo = () => {
                   className="mt-9 h-9 w-1/2 md:w-auto mx-auto"
                   type="button"
                   onClick={handleVerifyPasscode}
+                  disabled={isVerifiedPasscode || isVerifyingPasscode}
                 >
-                  {!isVerifyingPasscode ? (
-                  <>Verify Passcode {svg_verify}</>
-                ) : (
-                  <>
-                    Verifying
-                    <span className="animate-bounce">{svg_verifying}</span>
-                  </>
-                )}
+                  {isVerifyingPasscode ? (
+    <>
+      Verifying...
+      <span className="animate-bounce">{svg_verifying}</span>
+    </>
+  ) : isVerifyError ? (
+    <>
+      Retry
+      <span className="ml-2">{svg_retry}</span>
+    </>
+  ) : isVerifiedPasscode ? (
+    <>
+      Verified
+      <span className="ml-2">{svg_verified}</span>
+    </>
+  ) : (
+    <>
+      Verify Passcode {svg_verify}
+    </>
+  )}
                 </Button>
               </div>
             )}
@@ -392,7 +408,7 @@ const SignupFormDemo = () => {
           <button
             className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="submit"
-            disabled={!isSentPasscode}
+            disabled={!isSentPasscode || !isVerifiedPasscode}
             onClick={handleSubmit}
           >
             Submit &rarr;

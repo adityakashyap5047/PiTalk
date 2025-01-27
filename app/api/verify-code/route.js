@@ -7,11 +7,10 @@ export async function POST(request) {
         if(!Passcode || !passcode){
             return Response.json({ error: 'All fields are required.' }, {status: 400}); 
         }
+            
+        if (passcode === Passcode) {
         
-        const originalCode = passCode();
-    
-        if (passcode === originalCode) {
-            return Response.json({message: "get successfully"}, {status: 200})
+            return Response.json({message: "Passcode verified sucessfully"}, {status: 200})
         } else {
             return Response.json({message: "User not verified. Incorrect PassCode"}, {status: 403})
         }
