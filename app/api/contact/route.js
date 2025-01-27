@@ -1,37 +1,86 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export async function POST(request) {
-    const { name, email, message, contactNumber } = await request.json();
+  try {
+    const { name, email, category, otherCategory, title, description } =
+      await request.json();
 
-    
     // Validate the form data
-    if (!name || !email || !message || !contactNumber) {
-      return Response.json({ error: 'All fields are required.' });
+    if (
+      !name ||
+      !email ||
+      !category ||
+      !otherCategory ||
+      !title ||
+      !description
+    ) {
+      return Response.json(
+        { message: "All fields are required." },
+        { status: 400 }
+      );
     }
 
-    try {
-      const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+    //authentication the credentials of user
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-      // Email content
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Receiver's email address (set in .env.local)
-        subject: `New Contact Form Submission from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nContact Number: ${contactNumber}`,
-      };
+    // Email content
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: `Inquiry/Feedback: ${title}`,
+      text: `
+        Dear Support Team,
+    
+        I hope this message finds you well. My name is ${name}, and I am reaching out to you regarding the following:
+    
+        Category:- ${ category } (${category === "others" && otherCategory})
+    
+        Title of Inquiry/Feedback:
+        ${title}
+    
+        Details:
+        ${description}
+    
+        Please feel free to reach out to me if further information is required. I look forward to your response at your earliest convenience.
+    
+        Best regards,
+        ${name}
+        ${email}
+      `,
+      html: `
+        <p>Dear Support Team,</p>
+    
+        <p>I hope this message finds you well. My name is <strong>${name}</strong>, and I am reaching out to you regarding the following:</p>
+    
+        <p><strong>Category:</strong> ${category } (${category === "others" && otherCategory})</p>
+    
+        <p><strong>Title of Inquiry/Feedback:</strong> ${title}</p>
+    
+        <p><strong>Details:</strong> ${description}</p>
+    
+        <p>Please feel free to reach out to me if further information is required. I look forward to your response at your earliest convenience.</p>
+    
+        <br/>
+    
+        <p>Best regards,</p>
+        <p><strong>${name}</strong></p>
+        <p>${email}</p>
+      `,
+    };
+    
 
-      // Send the email
-      await transporter.sendMail(mailOptions);
+    // Send the email
+    await transporter.sendMail(mailOptions);
 
-      return Response.json({ message: 'Email sent successfully!' }, {status: 200});
-    } catch (error) {
-      console.error('Error sending email:', error);
-      return Response.json({ error: 'Failed to send email.' }, {status: 500});
-    }
+    return Response.json({message: "Passcode sent successfully!!!"}, {status: 200})
+  } catch (error) {
+    console.log("error while sending the Feedback", error);
+    return Response.json({message: 'An unexpected error occurred. Please try again later.'}, {status: 500});
+  }
 }

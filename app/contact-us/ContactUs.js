@@ -36,6 +36,9 @@ const SignupFormDemo = () => {
   const [isVerifyingPasscode, setIsVerifyingPasscode] = useState(false);
   const [isVerifiedPasscode, setIsVerifiedPasscode] = useState(false);
   const [isVerifyError, setIsVerifyError] = useState(false);
+  const [category, setCategory] = useState("");
+  const [selectError, setSelectError] = useState(false);
+  const [isSubmitError, setIsSubmitError] = useState(false);
 
   const { toast } = useToast();
 
@@ -45,7 +48,7 @@ const SignupFormDemo = () => {
     lastName: z.string().nonempty("Last Name cannot be empty"),
     email: z.string().email({ message: "Invalid email address" }),
     passcode: z.string().nonempty("Give your verification code"),
-    category: z.string().nonempty("Select a Category"),
+    otherCategory: z.string().nonempty("Enter your query"),
     title: z.string().nonempty("Please enter a title"),
     description: z.string().nonempty("give the description about your query"),
   });
@@ -58,9 +61,9 @@ const SignupFormDemo = () => {
       lastName: "",
       email: "",
       passcode: "",
-      category: "",
       title: "",
       description: "",
+      otherCategory: "",
     },
   });
 
@@ -144,11 +147,30 @@ const SignupFormDemo = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log("form submitted");
-      const { firstName, lastName, email, category, title, description } = form.getValues();
-
-    } catch (error) {
+      const { firstName, lastName, email, otherCategory, title, description } = form.getValues();
+      if (category === "") {
+        setSelectError(true);
+        return;
+      }
+      setSelectError(false);
       
+      if(!firstName || !lastName || !email || !otherCategory || !title || !description){
+        setIsSubmitError(true);
+        return;
+      }
+      setIsSubmitError(false);
+
+      const response = await axios.post("/api/contact", {
+        name: `${firstName} ${lastName}`,
+        email,
+        category,
+        otherCategory,
+        title,
+        description
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -321,25 +343,56 @@ const SignupFormDemo = () => {
               render={({ field }) => (
                 <FormItem className="md:w-1/4">
                   <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-                    Select the Category
+                    Query Category
                   </FormLabel>
                   <FormControl>
                     <Select
                       {...field}
-                      onChange={(e) => {
-                        field.onChange(e);
-                      }}
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
                     >
                       <option value="">Select a Category</option>
-                      <option value="option1">Option 1</option>
-                      <option value="option2">Option 2</option>
-                      <option value="option3">Option 3</option>
+                      <option value="account">Account Issues</option>
+                      <option value="technical">Technical Support</option>
+                      <option value="features">Feature Requests</option>
+                      <option value="guidelines">Community Guidelines</option>
+                      <option value="feedback">General Feedback</option>
+                      <option value="partnership">Partnership/Collaboration</option>
+                      <option value="others">Others</option>
                     </Select>
                   </FormControl>
+                  {selectError && (
+                    <p className="text-sm text-red-600">
+                      Select a category.
+                    </p>
+                  )}
                   <FormMessage />
                 </FormItem>
               )}
             />
+            {/* Show input box when "Other" is selected */}
+            {category === "others" && <FormField
+              name="otherCategory"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="md:w-1/2">
+                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+                    Please specify:
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your query"
+                      {...field}
+                      onChange={(e) => {
+                        field.onChange(e);
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />}
+            {/* input box for title of */}
             <FormField
               name="title"
               control={form.control}
@@ -392,6 +445,11 @@ const SignupFormDemo = () => {
             Submit &rarr;
             <BottomGradient />
           </button>
+          {isSubmitError && (
+            <p className="text-sm text-red-600">
+              Please fill all the above field.
+            </p>
+          )}
         </form>
       </Form>
       {/* </Vortex> */}
