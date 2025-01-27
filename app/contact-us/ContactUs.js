@@ -126,7 +126,6 @@ const SignupFormDemo = () => {
         Passcode,
         passcode
       });
-      console.log(response)
       setIsVerifyingPasscode(false);
       if (response.status === 200) {
         setIsVerifyError(false);
