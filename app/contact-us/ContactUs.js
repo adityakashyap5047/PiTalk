@@ -142,8 +142,14 @@ const SignupFormDemo = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("form submitted");
+    try {
+      e.preventDefault();
+      console.log("form submitted");
+      const { firstName, lastName, email, category, title, description } = form.getValues();
+
+    } catch (error) {
+      
+    }
   };
 
   return (
