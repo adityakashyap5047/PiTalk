@@ -3,7 +3,6 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Vortex } from "@/components/ui/vortex";
 import { Textarea } from "@/components/ui/textarea";
@@ -170,6 +169,7 @@ const SignupFormDemo = () => {
                   <FormControl>
                     <Input
                       placeholder="Enter your First Name"
+                      disabled={isSendingPasscode || isSentPasscode}
                       {...field}
                       onChange={(e) => {
                         field.onChange(e);
@@ -191,6 +191,7 @@ const SignupFormDemo = () => {
                   <FormControl>
                     <Input
                       placeholder="Enter your Last Name"
+                      disabled={isSendingPasscode || isSentPasscode}
                       {...field}
                       onChange={(e) => {
                         field.onChange(e);
@@ -214,6 +215,7 @@ const SignupFormDemo = () => {
                   <FormControl>
                     <Input
                       placeholder="Enter your Email Address"
+                      disabled={isSendingPasscode || isSentPasscode}
                       {...field}
                       onChange={(e) => {
                         field.onChange(e);
@@ -306,35 +308,6 @@ const SignupFormDemo = () => {
                 </Button>
               </div>
             )}
-          </div>
-          <div>
-            {/* <div className="flex flex-col md:flex-row md:space-x-2">
-  <LabelInputContainer className="mb-4 md:w-1/2">
-    <Label htmlFor="email" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-      Contact Number
-    </Label>
-    <Input id="email" placeholder="Enter your contact number" type="email" />
-  </LabelInputContainer>
-  <LabelInputContainer className="mb-4 md:w-1/4">
-    <Label htmlFor="password" className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-      Email Verification Code
-    </Label>
-    <Input id="password" placeholder="Enter your password here" type="password" />
-  </LabelInputContainer>
-  <Button variant="secondary" type="button">Verify your Email {svg_verify}</Button>
-  {/* <Button disabled>
-      Verifying ...
-      <span className="animate-bounce">{svg_verifying}</span>
-    </Button>
-    <Button>
-      Verified
-      {svg_verified}
-    </Button>
-    <Button>
-      Retry
-      {svg_retry}
-    </Button> 
-</div> */}
           </div>
           <div className="flex flex-col md:flex-row md:space-x-2">
             <FormField
