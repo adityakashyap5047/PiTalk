@@ -10,7 +10,7 @@ export async function POST(request) {
       !name ||
       !email ||
       !category ||
-      !otherCategory ||
+      (category === "others" && !otherCategory) ||
       !title ||
       !description
     ) {

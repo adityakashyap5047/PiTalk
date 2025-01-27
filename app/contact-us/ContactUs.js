@@ -16,7 +16,6 @@ import {
 } from "@/components/svg";
 import { Select } from "@/components/ui/select";
 import { useState } from "react";
-import { ToastAction } from "@/components/ui/toast";
 import {
   Form,
   FormControl,
@@ -39,6 +38,8 @@ const SignupFormDemo = () => {
   const [category, setCategory] = useState("");
   const [selectError, setSelectError] = useState(false);
   const [isSubmitError, setIsSubmitError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { toast } = useToast();
 
@@ -100,7 +101,14 @@ const SignupFormDemo = () => {
       });
       console.log(response);
       setIsSendingPasscode(false);
-      setIsSentPasscode(true);
+      if (response.status === 200) {
+        setIsSentPasscode(true);
+        toast({
+          title: "Passcode Sent Successfully",
+          description:
+            "Your verification passcode has been sent to your email. Please check your inbox to proceed.",
+        });
+      }
     } catch (error) {
       setIsSendingPasscode(false);
       console.log(error);
@@ -108,17 +116,11 @@ const SignupFormDemo = () => {
   };
 
   const handleVerifyPasscode = async () => {
-    toast({
-      title: "Scheduled: Catch up ",
-      description: "Friday, February 10, 2023 at 5:57 PM",
-      action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>,
-    });
     try {
-
       setIsVerifyingPasscode(true);
       const { passcode } = form.getValues();
 
-      if(!passcode){
+      if (!passcode) {
         setIsVerifyError(true);
         setIsVerifyingPasscode(false);
         return;
@@ -127,12 +129,16 @@ const SignupFormDemo = () => {
       setIsVerifyError(false);
       const response = await axios.post("/api/verify-code", {
         Passcode,
-        passcode
+        passcode,
       });
       setIsVerifyingPasscode(false);
       if (response.status === 200) {
         setIsVerifyError(false);
-        setIsVerifiedPasscode(true);
+        setIsVerifiedPasscode(true);  
+        toast({
+          title: "Passcode Verified",
+          description: "Your passcode has been successfully verified. You can now proceed.",
+        });        
       } else {
         setIsVerifiedPasscode(false);
         setIsVerifyError(true);
@@ -147,14 +153,22 @@ const SignupFormDemo = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const { firstName, lastName, email, otherCategory, title, description } = form.getValues();
+      const { firstName, lastName, email, otherCategory, title, description } =
+        form.getValues();
       if (category === "") {
         setSelectError(true);
         return;
       }
       setSelectError(false);
-      
-      if(!firstName || !lastName || !email || !otherCategory || !title || !description){
+
+      if (
+        !firstName ||
+        !lastName ||
+        !email ||
+        (category === "others" && !otherCategory) ||
+        !title ||
+        !description
+      ) {
         setIsSubmitError(true);
         return;
       }
@@ -166,7 +180,7 @@ const SignupFormDemo = () => {
         category,
         otherCategory,
         title,
-        description
+        description,
       });
       console.log(response);
     } catch (error) {
@@ -313,25 +327,23 @@ const SignupFormDemo = () => {
                   disabled={isVerifiedPasscode || isVerifyingPasscode}
                 >
                   {isVerifyingPasscode ? (
-    <>
-      Verifying...
-      <span className="animate-bounce">{svg_verifying}</span>
-    </>
-  ) : isVerifyError ? (
-    <>
-      Retry
-      <span className="ml-2">{svg_retry}</span>
-    </>
-  ) : isVerifiedPasscode ? (
-    <>
-      Verified
-      <span className="ml-2">{svg_verified}</span>
-    </>
-  ) : (
-    <>
-      Verify Passcode {svg_verify}
-    </>
-  )}
+                    <>
+                      Verifying...
+                      <span className="animate-bounce">{svg_verifying}</span>
+                    </>
+                  ) : isVerifyError ? (
+                    <>
+                      Retry
+                      <span className="ml-2">{svg_retry}</span>
+                    </>
+                  ) : isVerifiedPasscode ? (
+                    <>
+                      Verified
+                      <span className="ml-2">{svg_verified}</span>
+                    </>
+                  ) : (
+                    <>Verify Passcode {svg_verify}</>
+                  )}
                 </Button>
               </div>
             )}
@@ -357,41 +369,43 @@ const SignupFormDemo = () => {
                       <option value="features">Feature Requests</option>
                       <option value="guidelines">Community Guidelines</option>
                       <option value="feedback">General Feedback</option>
-                      <option value="partnership">Partnership/Collaboration</option>
+                      <option value="partnership">
+                        Partnership/Collaboration
+                      </option>
                       <option value="others">Others</option>
                     </Select>
                   </FormControl>
                   {selectError && (
-                    <p className="text-sm text-red-600">
-                      Select a category.
-                    </p>
+                    <p className="text-sm text-red-600">Select a category.</p>
                   )}
                   <FormMessage />
                 </FormItem>
               )}
             />
             {/* Show input box when "Other" is selected */}
-            {category === "others" && <FormField
-              name="otherCategory"
-              control={form.control}
-              render={({ field }) => (
-                <FormItem className="md:w-1/2">
-                  <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
-                    Please specify:
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Enter your query"
-                      {...field}
-                      onChange={(e) => {
-                        field.onChange(e);
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />}
+            {category === "others" && (
+              <FormField
+                name="otherCategory"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem className="md:w-1/2">
+                    <FormLabel className="text-neutral-300 text-sm max-w-sm mt-2 dark:text-neutral-600">
+                      Please specify:
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter your query"
+                        {...field}
+                        onChange={(e) => {
+                          field.onChange(e);
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
             {/* input box for title of */}
             <FormField
               name="title"
