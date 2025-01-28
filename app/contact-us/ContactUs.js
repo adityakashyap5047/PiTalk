@@ -15,7 +15,7 @@ import {
   svg_verifying,
 } from "@/components/svg";
 import { Select } from "@/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Form,
   FormControl,
@@ -42,6 +42,24 @@ const SignupFormDemo = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { toast } = useToast();
+
+  //reset the state
+  useEffect(() => {
+    if(isSubmitted){
+      setPasscode("");
+      setIsSentPasscode(false);
+      setIsSentError(false);
+      setIsSendingPasscode(false);
+      setIsVerifyingPasscode(false);
+      setIsVerifiedPasscode(false);
+      setIsVerifyError(false);
+      setCategory("");
+      setSelectError(false);
+      setIsSubmitError(false);
+      setIsSubmitting(false);
+      setIsSubmitted(false);
+    }
+  }, [isSubmitted]);
 
   //schema for form validation
   const schema = z.object({
@@ -190,6 +208,7 @@ const SignupFormDemo = () => {
       setIsSubmitting(false);
       if (response.status === 200) {
         setIsSubmitted(true);
+        form.reset();
         toast({
           title: "Message Sent Successfully",
           description: "Your message has been sent successfully. We will get back to you shortly.",
