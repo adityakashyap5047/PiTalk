@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient text-gray-800 py-10 px-4">
+    <div className="bg-gradient-linear from-[#343eb4] via-purple-500 to-[#343eb4] bg-[length:200%_200%] animate-bg-gradient transition-colors dark:from-[#121212] dark:via-[#080F58] dark:to-[#121212] text-gray-800 py-10 px-4">
       <div className="container mx-auto max-w-4xl shadow-md rounded-md p-6">
         <h1 className="text-3xl font-bold text-[#8ec0e8] mb-6">Privacy Policy</h1>
         <p className="mb-4 text-gray-800">
