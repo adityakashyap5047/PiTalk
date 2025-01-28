@@ -45,7 +45,7 @@ const SignupFormDemo = () => {
 
   //reset the state
   useEffect(() => {
-    if(isSubmitted){
+    if (isSubmitted) {
       setPasscode("");
       setIsSentPasscode(false);
       setIsSentError(false);
@@ -123,8 +123,9 @@ const SignupFormDemo = () => {
         setIsSentPasscode(true);
         toast({
           title: "Passcode Sent Successfully",
-          description: "Your verification passcode has been sent to your email. Please check your inbox to proceed.",
-          duration: 4000
+          description:
+            "Your verification passcode has been sent to your email. Please check your inbox to proceed.",
+          duration: 4000,
         });
       }
     } catch (error) {
@@ -152,12 +153,13 @@ const SignupFormDemo = () => {
       setIsVerifyingPasscode(false);
       if (response.status === 200) {
         setIsVerifyError(false);
-        setIsVerifiedPasscode(true);  
+        setIsVerifiedPasscode(true);
         toast({
           title: "Passcode Verified",
-          description: "Your passcode has been successfully verified. You can now proceed.",
-          duration: 4000
-        });        
+          description:
+            "Your passcode has been successfully verified. You can now proceed.",
+          duration: 4000,
+        });
       } else {
         setIsVerifiedPasscode(false);
         setIsVerifyError(true);
@@ -173,7 +175,8 @@ const SignupFormDemo = () => {
     try {
       setIsSubmitting(true);
       e.preventDefault();
-      const { firstName, lastName, email, otherCategory, title, description } = form.getValues();
+      const { firstName, lastName, email, otherCategory, title, description } =
+        form.getValues();
       if (category === "") {
         setSelectError(true);
         setIsSubmitting(false);
@@ -211,7 +214,8 @@ const SignupFormDemo = () => {
         form.reset();
         toast({
           title: "Message Sent Successfully",
-          description: "Your message has been sent successfully. We will get back to you shortly.",
+          description:
+            "Your message has been sent successfully. We will get back to you shortly.",
           duration: 4000,
         });
       }
@@ -224,13 +228,32 @@ const SignupFormDemo = () => {
   };
 
   return (
-    <div className="mx-auto max-w-screen-md my-2 p-4 md:p-0">
-      {/* <Vortex
-        backgroundColor="black"
-        rangeY={700}
-        particleCount={1000}
-        baseHue={10}
-      > */}
+    <div className="mx-auto max-w-screen-md p-4 md:p-0 md:pb-4">
+      <h3 className="text-3xl font-bold text-[#8ec0e8] mb-6">
+        Need Assistance? Contact Us Today!
+      </h3>
+      <div className="text-[#33b2e0] text-sm mb-8">
+        <p>
+          <strong>Instructions:</strong>
+        </p>
+        <ul className="list-disc ml-4">
+          <li>Provide a clear and concise title for your query.</li>
+          <li>Use the <strong>Category</strong> dropdown to select the relevant topic.</li>
+          <li>
+            If <strong>Other</strong> is selected, specify the category in the provided field.
+          </li>
+          <li>
+            In the description, include all relevant details such as:
+            <ul className="list-disc ml-6">
+              <li>What issue you are facing.</li>
+              <li>Steps to reproduce the problem.</li>
+              <li>Any error messages or screenshots (if applicable).</li>
+            </ul>
+          </li>
+          <li>Ensure your email is correct for follow-up communication.</li>
+        </ul>
+      </div>
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <div className="flex flex-col md:flex-row md:space-x-2">
@@ -490,19 +513,23 @@ const SignupFormDemo = () => {
             )}
           />
           <div className="text-center">
-          <Button
-            className="mt-4 md:mt-9 w-1/2 bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-            type="submit"
-            disabled={!isSentPasscode || !isVerifiedPasscode || isSubmitting }
-            onClick={handleSubmit}
-          >
-            {isSubmitting ? (
-              <>
-                Submitting...
-                <span className="animate-bounce">{svg_verifying}</span>
-              </>
-            ) : <span>Submit &rarr; <BottomGradient /></span> }
-          </Button>
+            <Button
+              className="mt-4 md:mt-9 w-1/2 bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+              type="submit"
+              disabled={!isSentPasscode || !isVerifiedPasscode || isSubmitting}
+              onClick={handleSubmit}
+            >
+              {isSubmitting ? (
+                <>
+                  Submitting...
+                  <span className="animate-bounce">{svg_verifying}</span>
+                </>
+              ) : (
+                <span>
+                  Submit &rarr; <BottomGradient />
+                </span>
+              )}
+            </Button>
           </div>
           {isSubmitError && (
             <p className="text-sm text-red-600">
@@ -511,7 +538,6 @@ const SignupFormDemo = () => {
           )}
         </form>
       </Form>
-      {/* </Vortex> */}
     </div>
   );
 };
