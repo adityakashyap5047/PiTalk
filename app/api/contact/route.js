@@ -39,7 +39,7 @@ export async function POST(request) {
     
         I hope this message finds you well. My name is ${name}, and I am reaching out to you regarding the following:
     
-        Category:- ${ category } (${category === "others" && otherCategory})
+        Category:-${category } ${category === "others" ? <> {otherCategory} </> : ""}
     
         Title of Inquiry/Feedback:
         ${title}
@@ -58,7 +58,7 @@ export async function POST(request) {
     
         <p>I hope this message finds you well. My name is <strong>${name}</strong>, and I am reaching out to you regarding the following:</p>
     
-        <p><strong>Category:-</strong> ${category } (${category === "others" && otherCategory})</p>
+        <p><strong>Category:-</strong> ${category } ${category === "others" ? "- "+otherCategory  : ""}</p>
     
         <p><strong>Title of Inquiry/Feedback:</strong> ${title}</p>
     

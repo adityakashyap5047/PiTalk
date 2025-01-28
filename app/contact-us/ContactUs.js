@@ -224,7 +224,7 @@ const SignupFormDemo = () => {
   };
 
   return (
-    <div className="mx-auto max-w-screen-md my-2">
+    <div className="mx-auto max-w-screen-md my-2 p-4 md:p-0">
       {/* <Vortex
         backgroundColor="black"
         rangeY={700}
