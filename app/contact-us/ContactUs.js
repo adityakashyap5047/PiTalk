@@ -105,8 +105,8 @@ const SignupFormDemo = () => {
         setIsSentPasscode(true);
         toast({
           title: "Passcode Sent Successfully",
-          description:
-            "Your verification passcode has been sent to your email. Please check your inbox to proceed.",
+          description: "Your verification passcode has been sent to your email. Please check your inbox to proceed.",
+          duration: 4000
         });
       }
     } catch (error) {
@@ -138,6 +138,7 @@ const SignupFormDemo = () => {
         toast({
           title: "Passcode Verified",
           description: "Your passcode has been successfully verified. You can now proceed.",
+          duration: 4000
         });        
       } else {
         setIsVerifiedPasscode(false);
@@ -152,13 +153,15 @@ const SignupFormDemo = () => {
 
   const handleSubmit = async (e) => {
     try {
+      setIsSubmitting(true);
       e.preventDefault();
-      const { firstName, lastName, email, otherCategory, title, description } =
-        form.getValues();
+      const { firstName, lastName, email, otherCategory, title, description } = form.getValues();
       if (category === "") {
         setSelectError(true);
+        setIsSubmitting(false);
         return;
       }
+      setIsSubmitting(true);
       setSelectError(false);
 
       if (
@@ -170,8 +173,10 @@ const SignupFormDemo = () => {
         !description
       ) {
         setIsSubmitError(true);
+        setIsSubmitting(false);
         return;
       }
+      setIsSubmitting(true);
       setIsSubmitError(false);
 
       const response = await axios.post("/api/contact", {
@@ -182,8 +187,19 @@ const SignupFormDemo = () => {
         title,
         description,
       });
+      setIsSubmitting(false);
+      if (response.status === 200) {
+        setIsSubmitted(true);
+        toast({
+          title: "Message Sent Successfully",
+          description: "Your message has been sent successfully. We will get back to you shortly.",
+          duration: 4000,
+        });
+      }
       console.log(response);
     } catch (error) {
+      setIsSubmitting(false);
+      setIsSubmitted(false);
       console.log(error);
     }
   };
@@ -361,6 +377,7 @@ const SignupFormDemo = () => {
                     <Select
                       {...field}
                       value={category}
+                      disabled={isSubmitting}
                       onChange={(e) => setCategory(e.target.value)}
                     >
                       <option value="">Select a Category</option>
@@ -395,6 +412,7 @@ const SignupFormDemo = () => {
                     <FormControl>
                       <Input
                         placeholder="Enter your query"
+                        disabled={isSubmitting}
                         {...field}
                         onChange={(e) => {
                           field.onChange(e);
@@ -439,6 +457,7 @@ const SignupFormDemo = () => {
                 </FormLabel>
                 <FormControl>
                   <Textarea
+                    disabled={isSubmitting}
                     placeholder="Write a description"
                     {...field}
                     onChange={(e) => {
@@ -453,7 +472,7 @@ const SignupFormDemo = () => {
           <button
             className="mt-4 md:mt-9 w-1/2 mx-auto bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="submit"
-            disabled={!isSentPasscode || !isVerifiedPasscode}
+            disabled={!isSentPasscode || !isVerifiedPasscode || isSubmitting }
             onClick={handleSubmit}
           >
             Submit &rarr;
