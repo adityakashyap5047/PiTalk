@@ -44,7 +44,7 @@ const Forums = () => {
         </h3>
         <div className="flex flex-wrap justify-center">
             {topics.map((topic) => {
-                return <div key={topic.img} className='shadow-lg bg-sky-200 lg:w-1/4 m-4 flex justify-center flex-col items-center py-10 rounded-xl gap-4 dark:bg-[#23224f]'>
+                return <div key={topic.img} className='shadow-lg bg-sky-700 lg:w-1/4 m-4 flex justify-center flex-col items-center py-10 rounded-xl gap-4 dark:bg-[#23224f]'>
                     <Image alt="a" src={topic.img} width={74} height={74}/>
                     <h2 className="text-2xl">{topic.text}</h2>
                     <p className="px-3">{topic.desc}</p>
