@@ -10,7 +10,7 @@ const Homepage = () => {
       {/* Hero section */}
 
       <section className="bg-white dark:bg-gray-800">
-        <BackgroundGradientAnimation>
+        <BackgroundGradientAnimation className="bg-gradient-linear animate-bg-gradient dark:from-[#121212] dark:via-[#080F58] dark:to-[#121212]">
           <Main/>
         </BackgroundGradientAnimation>
       </section>
