@@ -5,12 +5,12 @@ const PrivacyPolicy = () => {
     <div className="bg-gradient-linear from-[#343eb4] via-purple-500 to-[#343eb4] bg-[length:200%_200%] animate-bg-gradient transition-colors dark:from-[#121212] dark:via-[#080F58] dark:to-[#121212] text-gray-800 py-10 px-4">
       <div className="container mx-auto max-w-4xl shadow-md rounded-md p-6">
         <h1 className="text-3xl font-bold text-[#8ec0e8] mb-6">Privacy Policy</h1>
-        <p className="mb-4 text-gray-800">
+        <p className="mb-4 text-gray-800 dark:text-gray-200">
           At PiTalk, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our website.
         </p>
 
         <h2 className="text-2xl font-semibold text-[#2fdab2] mb-4">Information We Collect</h2>
-        <p className="mb-4 text-gray-800">
+        <p className="mb-4 text-gray-800 dark:text-gray-200">
           We may collect personal information such as your name, email address, and other details you provide when you:
         </p>
         <ul className="list-disc pl-6 mb-4 text-[#8ec0e8]">
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h2 className="text-2xl font-semibold text-[#2fdab2] mb-4">How We Use Your Information</h2>
-        <p className="mb-4 text-gray-800">
+        <p className="mb-4 text-gray-800 dark:text-gray-200">
           Your information is used to:
         </p>
         <ul className="list-disc pl-6 mb-4 text-[#8ec0e8]">
