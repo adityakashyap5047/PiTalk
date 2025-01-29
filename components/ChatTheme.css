@@ -14,8 +14,17 @@
 /* Apply the gradient background and animation to the .main class */
 .str-chat__channel-header, .str-chat__empty-channel, .str-chat__date-separator, .str-chat__channel, .str-chat__message-list-scroll, .str-chat__ul, .str-chat__message, .str-chat__message-input {
     background: linear-gradient(to right, #080F58, purple, #080F58); /* Gradient colors */
-    /* background-size: 200% 200%; Make the gradient larger than the element */
-    animation: bg-gradient 3s ease infinite; /* Animate the gradient */
+}
+
+.dark .str-chat__channel-header, 
+.dark .str-chat__empty-channel, 
+.dark .str-chat__date-separator, 
+.dark .str-chat__channel, 
+.dark .str-chat__message-list-scroll, 
+.dark .str-chat__ul, 
+.dark .str-chat__message, 
+.dark .str-chat__message-input {
+    background: linear-gradient(to right, #121212, #080F58, #121212);
 }
 
 .str-chat__channel-header{
