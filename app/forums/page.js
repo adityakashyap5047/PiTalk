@@ -38,13 +38,13 @@ const topics = [
 
 const Forums = () => {
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient">
-        <h3 className="text-4xl sm:text-5xl py-5 text-[#0E0E5C] font-semibold gap-2 text-center">
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-linear from-[#080F58] via-purple-500 to-[#080F58] bg-[length:200%_200%] animate-bg-gradient dark:from-[#121212] dark:via-[#080F58] dark:to-[#121212]">
+        <h3 className="text-4xl sm:text-5xl py-5 text-[#0E0E5C] dark:text-[#4441d5] font-semibold gap-2 text-center">
             Discussion Forums
         </h3>
         <div className="flex flex-wrap justify-center">
             {topics.map((topic) => {
-                return <div key={topic.img} className='shadow-lg bg-sky-200 lg:w-1/4 m-4 flex justify-center flex-col items-center py-10 rounded-xl gap-4'>
+                return <div key={topic.img} className='shadow-lg bg-sky-200 lg:w-1/4 m-4 flex justify-center flex-col items-center py-10 rounded-xl gap-4 dark:bg-[#23224f]'>
                     <Image alt="a" src={topic.img} width={74} height={74}/>
                     <h2 className="text-2xl">{topic.text}</h2>
                     <p className="px-3">{topic.desc}</p>
