@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 w-full">
+    <footer className="bg-gray-200 text-black dark:bg-gray-800 dark:text-white py-8 w-full">
       <div className="container mx-auto px-4 text-center">
         <p className="text-sm">
           &copy; 2025 PiTalk. All rights reserved.

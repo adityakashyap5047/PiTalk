@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react'
-import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
 import { ModeToggle } from './mode-toggle';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -13,15 +13,15 @@ const Navbar = () => {
             <ul className="flex space-x-4 items-center">
                 <li>
                     <ModeToggle/>
+                </li> 
+                <li>
+                    <Link href="/" className="text-gray-400 hover:text-white transition">Home</Link>
                 </li>
                 <li>
-                    <Link href="/" className="hover:text-gray-200">Home</Link>
-                </li>
-                <li>
-                    <Link href="/forums" className="hover:text-gray-200">Forums</Link>
+                    <a href="/forums" className="text-gray-400 hover:text-white transition">Forums</a>
                 </li>
                 <li className='flex justify-center items-center'>
-                    <UserButton/>
+                    <UserButton/> 
                 </li>
             </ul>
         </div>
