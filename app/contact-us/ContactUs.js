@@ -229,11 +229,11 @@ const SignupFormDemo = () => {
 
   return (
     <div className="mx-auto max-w-screen-md p-4 md:p-0 md:pb-4">
-      <h3 className="text-3xl font-bold text-[#8ec0e8] mb-6">
+      <h3 className="text-3xl font-bold text-[#8ec0e8] dark:text-[#2fdab2] mb-6 pt-4">
         Need Assistance? Contact Us Today!
       </h3>
-      <div className="text-[#33b2e0] text-sm mb-8">
-        <p>
+      <div className="text-[#33b2e0] dark:text-[#8ec0e8] text-sm mb-8">
+        <p className="text-xl mb-2 text-[#2fdab2] dark:text-[#4441d5]">
           <strong>Instructions:</strong>
         </p>
         <ul className="list-disc ml-4">
@@ -333,7 +333,7 @@ const SignupFormDemo = () => {
             {!isSentPasscode && (
               <Button
                 variant="secondary"
-                className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto"
+                className="mt-4 md:mt-9 h-9 w-1/2 md:w-auto mx-auto dark:hover:bg-gray-700"
                 type="button"
                 disabled={isSendingPasscode}
                 onClick={handleSendPasscode}
