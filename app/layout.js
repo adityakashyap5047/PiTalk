@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={process.env.CLERK_PK}>
     <html lang="en">
       <link rel="icon" href="/pi_symbol_logo.png" sizes="16x16"/>
       <body
