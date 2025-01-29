@@ -9,7 +9,7 @@ function KeyFeatures() {
 
   return (
     <div className="py-10 px-6 bg-sky-700 dark:bg-[#23224f]">
-      <h3 className="text-5xl text-[#0E0E5C] font-semibold text-center flex gap-2 justify-center mb-10">
+      <h3 className="text-5xl text-[#0E0E5C] dark:text-[#4441d5] font-semibold text-center flex gap-2 justify-center mb-10">
         Key Features
       </h3>
       <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-2">
