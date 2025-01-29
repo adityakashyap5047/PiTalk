@@ -7,7 +7,7 @@ import { ModeToggle } from './mode-toggle';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="bg-gray-200 text-black p-4 dark:bg-gray-800 dark:text-white">
         <div className="container mx-auto flex justify-between items-center">
             <Link href="/" className="text-xl font-bold">PiTalk</Link>
             <ul className="flex space-x-4 items-center">
