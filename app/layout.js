@@ -7,6 +7,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +32,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
         >
+          <ThemeProvider>
         <Navbar/>
         <main className="flex-grow">
             {children}
           </main>
           <Toaster/>
         <Footer/>
+        </ThemeProvider>
       </body>
     </html>
     </ClerkProvider>
