@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -50,17 +50,17 @@ const Forums = () => {
     };
 
     // Reset isLoading when navigation completes
-    // useEffect(() => {
-    //     const handleRouteChange = () => setIsLoading(false);
+    useEffect(() => {
+        const handleRouteChange = () => setIsLoading(false);
 
-    //     router.events.on('routeChangeComplete', handleRouteChange);
-    //     router.events.on('routeChangeError', handleRouteChange);
+        router.events?.on('routeChangeComplete', handleRouteChange);
+        router.events?.on('routeChangeError', handleRouteChange);
 
-    //     return () => {
-    //         router.events.off('routeChangeComplete', handleRouteChange);
-    //         router.events.off('routeChangeError', handleRouteChange);
-    //     };
-    // }, [router]);
+        return () => {
+            router.events?.off('routeChangeComplete', handleRouteChange);
+            router.events?.off('routeChangeError', handleRouteChange);
+        };
+    }, [router]);
     
 
 //   return (
